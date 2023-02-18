@@ -1,29 +1,29 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AgonesDashboard.Models
+namespace AgonesDashboard.Models.Agones
 {
     public class GameServerAllocationResponse
     {
         [JsonPropertyName("gameServerName")]
-        string GameServerName { get; set; }
+        public string GameServerName { get; set; }
 
         [JsonPropertyName("ports")]
         IEnumerable<GameServerAllocationResponsePort> Ports { get; set; }
 
         [JsonPropertyName("address")]
-        string Address { get; set; }
+        public string Address { get; set; }
 
         [JsonPropertyName("nodeName")]
-        string NodeName { get; set; }
+        public string NodeName { get; set; }
 
     }
 
     public class GameServerAllocationResponsePort
     {
         [JsonPropertyName("name")]
-        string Name { get; set; }
+        public string Name { get; set; }
 
         [JsonPropertyName("port")]
-        string Port { get; set; }
+        public string Port { get; set; }
     }
 }
