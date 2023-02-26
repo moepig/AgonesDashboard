@@ -1,7 +1,12 @@
+using AgonesDashboard.Repositories;
+using AgonesDashboard.Repositories.Kubernetes;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IGameServerRepository, GameServerRepository>();
 
 var app = builder.Build();
 

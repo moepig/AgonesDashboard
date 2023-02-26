@@ -1,4 +1,6 @@
-﻿namespace AgonesDashboard.Repositories
+﻿
+
+namespace AgonesDashboard.Repositories
 {
     public interface IGameServerAllocator
     {
