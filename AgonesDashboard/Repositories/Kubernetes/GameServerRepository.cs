@@ -4,7 +4,7 @@ using k8s;
 
 namespace AgonesDashboard.Repositories.Kubernetes
 {
-    public class GameServerRepository
+    public class GameServerRepository : IGameServerRepository
     {
         private readonly ILogger<GameServerRepository> _logger;
 
@@ -36,5 +36,5 @@ namespace AgonesDashboard.Repositories.Kubernetes
 
             return _client;
         }
-    } 
+    }
 }
