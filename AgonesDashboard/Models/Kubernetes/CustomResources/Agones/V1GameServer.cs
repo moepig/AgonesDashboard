@@ -1,27 +1,25 @@
-﻿using k8s;
-using k8s.Models;
+﻿using k8s.Models;
 using System.Text.Json.Serialization;
 
 namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
 {
-
-
-    public class V1GameServer : CustomResource<V1GameServerSpec, GameServerStatus>
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServer
+    public class V1GameServer : CustomResource<V1GameServerSpec, V1GameServerStatus>
     {
 
     }
 
-    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServer
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerSpec
     public class V1GameServerSpec
     {
         [JsonPropertyName("container")]
         public string Container { get; set; }
 
         [JsonPropertyName("ports")]
-        public List<V1GameServerPortSpec> Ports { get; set; }
+        public IEnumerable<V1GameServerPort> Ports { get; set; }
 
         [JsonPropertyName("health")]
-        public V1HealthSpec Health { get; set; }
+        public V1Health Health { get; set; }
 
         // agones.dev/agones/pkg/apis.SchedulingStrategy	
 
@@ -29,7 +27,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public string Scheduling { get; set; }
 
         [JsonPropertyName("sdkServer")]
-        public V1SdkServerSpec SdkServer { get; set; }
+        public V1SdkServer SdkServer { get; set; }
 
         [JsonPropertyName("template")]
         public V1PodTemplateSpec Template { get; set; }
@@ -38,11 +36,11 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public V1PlayerSpec Players { get; set; }
 
         [JsonPropertyName("eviction")]
-        public V1EvictionSpec Eviction { get; set; }
+        public V1Eviction Eviction { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.Health
-    public class V1HealthSpec
+    public class V1Health
     {
         [JsonPropertyName("disabled")]
         public bool Disabled { get; set; }
@@ -58,7 +56,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerPort
-    public class V1GameServerPortSpec
+    public class V1GameServerPort
     {
         [JsonPropertyName("name")]
         public string name { get; set; }
@@ -82,7 +80,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.SdkServer
-    public class V1SdkServerSpec
+    public class V1SdkServer
     {
         // SdkServerLogLevel (string alias)
         [JsonPropertyName("logLevel")]
@@ -103,16 +101,62 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.Eviction
-    public class V1EvictionSpec
+    public class V1Eviction
     {
         // EvictionSafe (string alias)
         [JsonPropertyName("safe")]
         public string Safe { get; set; }
     }
 
-    public class GameServerStatus : V1Status
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerStatus
+    public class V1GameServerStatus : V1Status
     {
-        [JsonPropertyName("temperature")]
-        public string Temperature { get; set; }
+        // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerState
+        // GameServerState (string alias)
+        [JsonPropertyName("state")]
+        public string state { get; set; }
+
+        [JsonPropertyName("ports")]
+        public IEnumerable<V1GameServerStatusPort> Ports { get; set; }
+
+        [JsonPropertyName("address")]
+        public string Address { get; set; }
+
+        [JsonPropertyName("nodeName")]
+        public string NodeName { get; set; }
+
+        // meta/v1.Time
+        [JsonPropertyName("reservedUntil")]
+        public System.DateTime? ReservedUntil { get; set; }
+
+        [JsonPropertyName("players")]
+        public V1PlayerStatus Players { get; set; }
+
+        [JsonPropertyName("eviction")]
+        public V1Eviction Eviction { get; set; }
+
+    }
+
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerStatusPort
+    public class V1GameServerStatusPort
+    {
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
+        [JsonPropertyName("port")]
+        public int Port { get; set; }
+    }
+
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.PlayerStatus
+    public class V1PlayerStatus
+    {
+        [JsonPropertyName("count")]
+        public long count { get; set; }
+
+        [JsonPropertyName("capacity")]
+        public long capacity { get; set; }
+
+        [JsonPropertyName("ids")]
+        public IEnumerable<string> Ids { get; set; }
     }
 }
