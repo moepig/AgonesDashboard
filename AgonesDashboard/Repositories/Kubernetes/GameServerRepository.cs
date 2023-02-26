@@ -1,5 +1,5 @@
 ﻿using AgonesDashboard.Models.Kubernetes;
-using AgonesDashboard.Models.Kubernetes.CustomResources;
+using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
 using k8s;
 
 namespace AgonesDashboard.Repositories.Kubernetes
@@ -15,10 +15,10 @@ namespace AgonesDashboard.Repositories.Kubernetes
             _logger = logger;
         }
 
-        public async Task<CustomResourceList<GameServerResource>> ListAsync()
+        public async Task<CustomResourceList<V1GameServer>> ListAsync()
         {
             var client = GetClient();
-            var result = await client.ListAsync<CustomResourceList<GameServerResource>>().ConfigureAwait(false);
+            var result = await client.ListAsync<CustomResourceList<V1GameServer>>().ConfigureAwait(false);
 
             return result;
         }
