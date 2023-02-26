@@ -7,10 +7,10 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     public class V1GameServerTemplateSpec
     {
         [JsonPropertyName("metadata")]
-        public V1ObjectMeta Metadata { get; set; }
+        public V1ObjectMeta? Metadata { get; set; }
 
         [JsonPropertyName("spec")]
-        public V1GameServerSpec Spec { get; set; }
+        public V1GameServerSpec? Spec { get; set; }
     }
 
 }

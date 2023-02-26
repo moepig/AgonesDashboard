@@ -16,14 +16,14 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public int Replicas { get; set; }
 
         [JsonPropertyName("strategy")]
-        public V1DeploymentStrategy Strategy { get; set; }
+        public V1DeploymentStrategy? Strategy { get; set; }
 
         // agones.dev/agones/pkg/apis.SchedulingStrategy	
         [JsonPropertyName("scheduling")]
-        public string Scheduling { get; set; }
+        public string? Scheduling { get; set; }
 
         [JsonPropertyName("spec")]
-        public V1GameServerTemplateSpec Spec { get; set; }
+        public V1GameServerTemplateSpec? Spec { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.FleetStatus
@@ -42,6 +42,6 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public int AllocatedReplicas { get; set; }
 
         [JsonPropertyName("players")]
-        public V1AggregatedPlayerStatus Players { get; set; }
+        public V1AggregatedPlayerStatus? Players { get; set; }
     }
 }

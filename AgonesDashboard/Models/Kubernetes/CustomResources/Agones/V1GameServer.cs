@@ -13,30 +13,30 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     public class V1GameServerSpec
     {
         [JsonPropertyName("container")]
-        public string Container { get; set; }
+        public string? Container { get; set; }
 
         [JsonPropertyName("ports")]
-        public IEnumerable<V1GameServerPort> Ports { get; set; }
+        public IEnumerable<V1GameServerPort>? Ports { get; set; }
 
         [JsonPropertyName("health")]
-        public V1Health Health { get; set; }
+        public V1Health? Health { get; set; }
 
         // agones.dev/agones/pkg/apis.SchedulingStrategy	
 
         [JsonPropertyName("scheduling")]
-        public string Scheduling { get; set; }
+        public string? Scheduling { get; set; }
 
         [JsonPropertyName("sdkServer")]
-        public V1SdkServer SdkServer { get; set; }
+        public V1SdkServer? SdkServer { get; set; }
 
         [JsonPropertyName("template")]
-        public V1PodTemplateSpec Template { get; set; }
+        public V1PodTemplateSpec? Template { get; set; }
 
         [JsonPropertyName("players")]
-        public V1PlayerSpec Players { get; set; }
+        public V1PlayerSpec? Players { get; set; }
 
         [JsonPropertyName("eviction")]
-        public V1Eviction Eviction { get; set; }
+        public V1Eviction? Eviction { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.Health
@@ -59,14 +59,14 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     public class V1GameServerPort
     {
         [JsonPropertyName("name")]
-        public string name { get; set; }
+        public string? name { get; set; }
 
         // PortPolicy (string alias)
         [JsonPropertyName("portPolicy")]
-        public string PortPolicy { get; set; }
+        public string? PortPolicy { get; set; }
 
         [JsonPropertyName("container")]
-        public string Container { get; set; }
+        public string? Container { get; set; }
 
         [JsonPropertyName("containerPort")]
         public int ContainerPort { get; set; }
@@ -76,7 +76,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
 
         // Kubernetes core/v1.Protocol
         [JsonPropertyName("protocol")]
-        public string Protocol { get; set; }
+        public string? Protocol { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.SdkServer
@@ -84,7 +84,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     {
         // SdkServerLogLevel (string alias)
         [JsonPropertyName("logLevel")]
-        public string LogLevel { get; set; }
+        public string? LogLevel { get; set; }
 
         [JsonPropertyName("grpcPort")]
         public int GrpcPort { get; set; }
@@ -105,7 +105,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     {
         // EvictionSafe (string alias)
         [JsonPropertyName("safe")]
-        public string Safe { get; set; }
+        public string? Safe { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerStatus
@@ -114,26 +114,26 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerState
         // GameServerState (string alias)
         [JsonPropertyName("state")]
-        public string state { get; set; }
+        public string? state { get; set; }
 
         [JsonPropertyName("ports")]
         public IEnumerable<V1GameServerStatusPort> Ports { get; set; }
 
         [JsonPropertyName("address")]
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         [JsonPropertyName("nodeName")]
-        public string NodeName { get; set; }
+        public string? NodeName { get; set; }
 
         // meta/v1.Time
         [JsonPropertyName("reservedUntil")]
         public System.DateTime? ReservedUntil { get; set; }
 
         [JsonPropertyName("players")]
-        public V1PlayerStatus Players { get; set; }
+        public V1PlayerStatus? Players { get; set; }
 
         [JsonPropertyName("eviction")]
-        public V1Eviction Eviction { get; set; }
+        public V1Eviction? Eviction { get; set; }
 
     }
 
@@ -141,7 +141,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     public class V1GameServerStatusPort
     {
         [JsonPropertyName("name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [JsonPropertyName("port")]
         public int Port { get; set; }
@@ -157,6 +157,6 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public long capacity { get; set; }
 
         [JsonPropertyName("ids")]
-        public IEnumerable<string> Ids { get; set; }
+        public IEnumerable<string>? Ids { get; set; }
     }
 }
