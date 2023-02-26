@@ -1,10 +1,10 @@
 ﻿using AgonesDashboard.Models.Kubernetes;
-using AgonesDashboard.Models.Kubernetes.CustomResources;
+using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
 
 namespace AgonesDashboard.Repositories
 {
     public interface IGameServerRepository
     {
-        public Task<CustomResourceList<GameServerResource>> ListAsync();
+        public Task<CustomResourceList<V1GameServer>> ListAsync();
     }
 }
