@@ -1,6 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using k8s.Models;
+using System.Text.Json.Serialization;
 
-namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
+namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.AutoScaling
 {
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#autoscaling.agones.dev/v1.FleetAutoscaler
     public class V1FleetAutoscaler<V1FleetAutoscalerSpec, V1FleetAutoscalerStatus>
@@ -21,7 +22,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#autoscaling.agones.dev/v1.FleetAutoscalerStatus
-    public class V1FleetAutoscalerStatus
+    public class V1FleetAutoscalerStatus : V1Status
     {
         [JsonPropertyName("currentReplicas")]
         public int CurrentReplicas { get; set; }
