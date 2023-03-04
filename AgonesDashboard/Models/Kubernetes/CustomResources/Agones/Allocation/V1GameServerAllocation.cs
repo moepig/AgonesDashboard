@@ -1,7 +1,7 @@
 ﻿using k8s.Models;
 using System.Text.Json.Serialization;
 
-namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
+namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
 {
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#allocation.agones.dev/v1.GameServerAllocation
     public class V1GameServerAllocation : CustomResource<V1GameServerAllocationSpec, V1GameServerAllocationStatus>

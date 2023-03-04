@@ -3,10 +3,12 @@ using System.Text.Json.Serialization;
 
 namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
 {
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerSet
     public class V1GameServerSet : CustomResource<V1GameServerSetSpec, V1GameServerSetStatus>
     {
     }
 
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerSetSpec
     public class V1GameServerSetSpec
     {
         [JsonPropertyName("replicas")]
@@ -20,6 +22,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public V1GameServerTemplateSpec? Template { get; set; }
     }
 
+    // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerSetStatus
     public class V1GameServerSetStatus : V1Status
     {
         [JsonPropertyName("replicas")]
