@@ -1,0 +1,43 @@
+﻿@model AgonesDashboard.ViewModels.GameServer.Index
+@{
+    ViewData["Title"] = "GameServer";
+}
+<table>
+    <thead>
+        <tr>
+            <th>Namespace</th>
+            <th>Name</th>
+            <th>Container name</th>
+            <th>Container image</th>
+            <th>Host port</th>
+            <th>Container port</th>
+            <th>Protocol</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var (k, v) in @Model.GameServers)
+        {
+            @foreach (var gs in v)
+            {
+                @foreach (var c in gs.GameServerSimpleContainer)
+                {
+                    <tr>
+                        <td>@k</td> @* TODO: rawspan 設定する *@
+                        <td>@gs.Name</td> @* TODO: rawspan 設定する*@
+                        <td>@c.Name</td>
+                        <td>@c.Image</td>
+                        <td>@gs.HostPort</td> @* TODO: rawspan 設定する*@
+                        <td>@gs.ContainerPort</td> @* TODO: rawspan 設定する*@
+                        <td>@gs.Protocol</td> @* TODO: rawspan 設定する*@
+                    </tr>
+                }
+            }
+        }
+
+    </tbody>
+</table>
+<hr />
+<details>
+    <summary>viewmodel json</summary>
+    <pre>@Model.ToString()</pre>
+</details>

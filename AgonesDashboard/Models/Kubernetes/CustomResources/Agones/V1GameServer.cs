@@ -117,7 +117,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public string? state { get; set; }
 
         [JsonPropertyName("ports")]
-        public IEnumerable<V1GameServerStatusPort> Ports { get; set; }
+        public IEnumerable<V1GameServerStatusPort>? Ports { get; set; }
 
         [JsonPropertyName("address")]
         public string? Address { get; set; }
