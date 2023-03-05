@@ -114,7 +114,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.GameServerState
         // GameServerState (string alias)
         [JsonPropertyName("state")]
-        public string? state { get; set; }
+        public string? State { get; set; }
 
         [JsonPropertyName("ports")]
         public IEnumerable<V1GameServerStatusPort>? Ports { get; set; }
