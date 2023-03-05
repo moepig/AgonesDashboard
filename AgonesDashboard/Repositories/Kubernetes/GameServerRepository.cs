@@ -13,28 +13,17 @@ namespace AgonesDashboard.Repositories.Kubernetes
         public GameServerRepository(ILogger<GameServerRepository> logger)
         {
             _logger = logger;
-        }
-
-        public async Task<CustomResourceList<V1GameServer>> ListAsync()
-        {
-            var client = GetClient();
-            var result = await client.ListAsync<CustomResourceList<V1GameServer>>().ConfigureAwait(false);
-
-            return result;
-        }
-
-        private GenericClient GetClient()
-        {
-            if (_client is not null)
-            {
-                return _client;
-            }
 
             var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             var kubernetes = new k8s.Kubernetes(config);
             _client = new GenericClient(kubernetes, "agones.dev", "v1", "gameservers");
+        }
 
-            return _client;
+        public async Task<CustomResourceList<V1GameServer>> ListAsync()
+        {
+            var result = await _client.ListAsync<CustomResourceList<V1GameServer>>().ConfigureAwait(false);
+
+            return result;
         }
     }
 }
