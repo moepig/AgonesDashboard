@@ -15,25 +15,40 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var (k, v) in @Model.GameServers)
-        {
-            @foreach (var gs in v)
+        @{
+            foreach (var (k, v) in Model.GameServers)
             {
-                @foreach (var c in gs.GameServerSimpleContainer)
+                var isNamespaceFirst = true;
+                foreach (var gs in v)
                 {
-                    <tr>
-                        <td>@k</td> @* TODO: rawspan 設定する *@
-                        <td>@gs.Name</td> @* TODO: rawspan 設定する*@
-                        <td>@c.Name</td>
-                        <td>@c.Image</td>
-                        <td>@gs.HostPort</td> @* TODO: rawspan 設定する*@
-                        <td>@gs.ContainerPort</td> @* TODO: rawspan 設定する*@
-                        <td>@gs.Protocol</td> @* TODO: rawspan 設定する*@
-                    </tr>
+                    var isGameServerFirst = true;
+                    var containerCount = gs.GameServerSimpleContainer?.Count();
+                    foreach (var c in gs.GameServerSimpleContainer)
+                    {
+                        <tr>
+                            @if (isNamespaceFirst)
+                            {
+                                <td rowspan="@Model.ContainerTotal[k]">@k</td>
+                            }
+                            @if (isGameServerFirst)
+                            {
+                                <td rowspan="@containerCount">@gs.Name</td>
+                            }
+                            <td>@c.Name</td>
+                            <td>@c.Image</td>
+                            @if (isGameServerFirst)
+                            {
+                                <td rowspan="@containerCount">@gs.HostPort</td>
+                                <td rowspan="@containerCount">@gs.ContainerPort</td>
+                                <td rowspan="@containerCount">@gs.Protocol</td>
+                            }
+                        </tr>
+                        isGameServerFirst = false;
+                        isNamespaceFirst = false;
+                    }
                 }
             }
         }
-
     </tbody>
 </table>
 <hr />
