@@ -17,10 +17,13 @@ namespace AgonesDashboard.ViewModels.GameServer
     public class GameServerSimple
     {
         public string? Name { get; set; }
+        public string? Address { get; set; }
         public int? ContainerPort { get; set; }
         public int? HostPort { get; set; }
         public IEnumerable<GameServerSimpleContainer>? GameServerSimpleContainer { get; set; }
         public string? Protocol { get; set; }
+        public string? State { get; set; }
+
     }
 
     public class GameServerSimpleContainer

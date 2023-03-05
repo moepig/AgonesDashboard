@@ -45,6 +45,8 @@ namespace AgonesDashboard.Controllers
                 ContainerPort = 8080,
                 HostPort = 80,
                 Protocol = "TCP",
+                State = "Healty",
+                Address = "1.2.3.4",
                 GameServerSimpleContainer = new List<GameServerSimpleContainer>
                 {
                     new GameServerSimpleContainer { Name = "container1", Image = "image1" },
@@ -59,6 +61,8 @@ namespace AgonesDashboard.Controllers
                 ContainerPort = 9090,
                 HostPort = 90,
                 Protocol = "UDP",
+                State = "Unhealty",
+                Address = "192.168.100.200",
                 GameServerSimpleContainer = new List<GameServerSimpleContainer>
                 {
                     new GameServerSimpleContainer { Name = "container3", Image = "image3" },
