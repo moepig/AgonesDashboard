@@ -57,9 +57,11 @@ namespace AgonesDashboard.Services
                 {
                     Name = item.Metadata?.Name,
                     GameServerSimpleContainer = simpleContainers,
+                    Address = item.Status?.Address,
                     ContainerPort = port?.ContainerPort,
                     HostPort = port?.HostPort,
                     Protocol = port?.Protocol,
+                    State = item.Status?.State,
                 };
 
                 // 後続処理のための事前 null チェック

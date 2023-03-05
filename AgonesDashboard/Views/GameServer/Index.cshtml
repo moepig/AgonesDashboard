@@ -9,6 +9,8 @@
             <th>Name</th>
             <th>Container name</th>
             <th>Container image</th>
+            <th>State</th>
+            <th>Address</th>
             <th>Host port</th>
             <th>Container port</th>
             <th>Protocol</th>
@@ -38,6 +40,8 @@
                             <td>@c.Image</td>
                             @if (isGameServerFirst)
                             {
+                                <td rowspan="@containerCount">@gs.State</td>
+                                <td rowspan="@containerCount">@gs.Address</td>
                                 <td rowspan="@containerCount">@gs.HostPort</td>
                                 <td rowspan="@containerCount">@gs.ContainerPort</td>
                                 <td rowspan="@containerCount">@gs.Protocol</td>
