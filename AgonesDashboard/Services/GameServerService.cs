@@ -82,9 +82,18 @@ namespace AgonesDashboard.Services
                 addTarget.Add(gameServer);
             }
 
+            // namespace ごとのコンテナ数を求めて保存
+            var containerTotal = new Dictionary<string, int>();
+
+            foreach (var (k, v) in gameServers){
+                var count = v.SelectMany(x => x.GameServerSimpleContainer).Count();
+                containerTotal.Add(k, count);
+            }
+
             var viewModel = new ViewModels.GameServer.Index()
             {
                 GameServers = gameServers,
+                ContainerTotal = containerTotal,
             };
 
             return viewModel;

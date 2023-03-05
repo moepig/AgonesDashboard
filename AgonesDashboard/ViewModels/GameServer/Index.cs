@@ -6,6 +6,7 @@ namespace AgonesDashboard.ViewModels.GameServer
     {
         // key: namespace
         public IDictionary<string, IList<GameServerSimple>> GameServers { get; set; }
+        public IDictionary<string, int> ContainerTotal { get; set; }
 
         public override string ToString()
         {
