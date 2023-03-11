@@ -10,18 +10,16 @@ namespace AgonesDashboard.Controllers
 {
     public class GameServerController : Controller
     {
-        private readonly ILogger<GameServerRepository> _logger;
-        private readonly IGameServerRepository _gameServerRepository;
+        private readonly ILogger<GameServerController> _logger;
         private readonly IGameServerService _gameServerService;
 
         public GameServerController(
-            ILogger<GameServerRepository> logger,
+            ILogger<GameServerController> logger,
             IGameServerRepository gameServerRepository,
             IGameServerService gameServerService
         )
         {
             _logger = logger;
-            _gameServerRepository = gameServerRepository;
             _gameServerService = gameServerService;
         }
 
@@ -92,13 +90,6 @@ namespace AgonesDashboard.Controllers
             };
 
             return View("Index", viewModel);
-        }
-        
-        public async Task<string> Test()
-        {
-            var list = await _gameServerRepository.ListAsync();
-
-            return JsonSerializer.Serialize(list);
         }
     }
 }
