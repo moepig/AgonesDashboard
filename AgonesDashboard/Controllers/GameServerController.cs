@@ -83,7 +83,7 @@ namespace AgonesDashboard.Controllers
                 containerTotal.Add(k, count);
             }
 
-            var viewModel = new ViewModels.GameServer.Index
+            var viewModel = new ViewModels.GameServer.GameServerList
             {
                 GameServers = (IDictionary<string, IList<GameServerSimple>>)gameServers,
                 ContainerTotal = containerTotal,

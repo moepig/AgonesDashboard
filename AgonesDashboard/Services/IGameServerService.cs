@@ -2,6 +2,6 @@
 {
     public interface IGameServerService
     {
-        public Task<ViewModels.GameServer.Index?> List();
+        public Task<ViewModels.GameServer.GameServerList?> List();
     }
 }
