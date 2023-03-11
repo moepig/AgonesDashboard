@@ -1,4 +1,5 @@
-﻿using AgonesDashboard.Repositories;
+﻿using AgonesDashboard.Filters;
+using AgonesDashboard.Repositories;
 using AgonesDashboard.Repositories.Kubernetes;
 using AgonesDashboard.Services;
 using AgonesDashboard.ViewModels.GameServer;
@@ -37,6 +38,7 @@ namespace AgonesDashboard.Controllers
             return View(viewModel);
         }
 
+        [DevelopmentOnly]
         public ViewResult IndexViewTest()
         {
             var gameServer1 = new GameServerSimple
