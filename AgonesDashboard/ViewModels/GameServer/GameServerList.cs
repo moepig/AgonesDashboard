@@ -2,7 +2,7 @@
 
 namespace AgonesDashboard.ViewModels.GameServer
 {
-    public class Index
+    public class GameServerList
     {
         // key: namespace
         public IDictionary<string, IList<GameServerSimple>> GameServers { get; set; }
