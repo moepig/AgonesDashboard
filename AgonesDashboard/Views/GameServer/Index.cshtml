@@ -1,4 +1,5 @@
-﻿@model AgonesDashboard.ViewModels.GameServer.GameServerList
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model AgonesDashboard.ViewModels.GameServer.GameServerIndex
 @{
     ViewData["Title"] = "GameServer";
 }
@@ -55,8 +56,12 @@
         }
     </tbody>
 </table>
-<hr />
-<details>
-    <summary>viewmodel json</summary>
-    <pre>@Model.ToString()</pre>
-</details>
+
+@if (hostingEnv.IsDevelopment())
+{
+    <hr />
+    <details>
+        <summary>viewmodel json</summary>
+        <pre>@Model.ToString()</pre>
+    </details>
+}

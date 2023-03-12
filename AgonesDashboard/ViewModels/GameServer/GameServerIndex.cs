@@ -2,16 +2,11 @@
 
 namespace AgonesDashboard.ViewModels.GameServer
 {
-    public class GameServerList
+    public class GameServerIndex : AbstractViewModel
     {
         // key: namespace
         public IDictionary<string, IList<GameServerSimple>> GameServers { get; set; }
         public IDictionary<string, int> ContainerTotal { get; set; }
-
-        public override string ToString()
-        {
-            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
-        }
     }
 
     public class GameServerSimple
@@ -23,7 +18,6 @@ namespace AgonesDashboard.ViewModels.GameServer
         public IEnumerable<GameServerSimpleContainer>? GameServerSimpleContainer { get; set; }
         public string? Protocol { get; set; }
         public string? State { get; set; }
-
     }
 
     public class GameServerSimpleContainer
