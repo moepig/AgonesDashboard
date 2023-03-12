@@ -15,6 +15,18 @@ namespace AgonesDashboard.Services
             _gameServerRepository = gameServerRepository;
         }
 
+        public async Task<Detail> Detail(string ns, string name)
+        {
+            var gameServer = await _gameServerRepository.GetAsync(ns, name);
+
+            var viewModel = new Detail
+            {
+                GameServer = gameServer,
+            };
+
+            return viewModel;
+        }
+
         public async Task<GameServerIndex> List()
         {
             var list = await _gameServerRepository.ListAsync();
