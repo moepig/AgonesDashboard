@@ -21,12 +21,6 @@ namespace AgonesDashboard.Controllers
         {
             var viewModel = await _fleetService.List();
 
-            if (viewModel is null)
-            {
-                _logger.LogError("viewModel is null");
-                throw new Exception();
-            }
-
             return View(viewModel);
         }
     }
