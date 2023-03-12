@@ -1,4 +1,5 @@
-﻿using AgonesDashboard.Repositories;
+﻿using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
+using AgonesDashboard.Repositories;
 using AgonesDashboard.ViewModels.GameServer;
 
 namespace AgonesDashboard.Services
@@ -14,20 +15,14 @@ namespace AgonesDashboard.Services
             _gameServerRepository = gameServerRepository;
         }
 
-        public async Task<GameServerIndex?> List()
+        public async Task<GameServerIndex> List()
         {
             var list = await _gameServerRepository.ListAsync();
-
-            if (list.Items is null)
-            {
-                _logger.LogError("list of GameServer is null");
-                return null;
-            }
 
             // <namespace, その namespace の GameServer 一覧> な Dictionary
             var gameServers = new Dictionary<string, IList<GameServerSimple>>();
 
-            foreach (var item in list.Items)
+            foreach (var item in list.Items ?? new List<V1GameServer>())
             {
                 // 後続処理のための事前 null チェック
                 if (item.Spec?.Template?.Spec is null || item.Spec.Template.Spec.Containers is null)

@@ -4,6 +4,6 @@ namespace AgonesDashboard.Services
 {
     public interface IFleetService
     {
-        public Task<FleetIndex?> List();
+        public Task<FleetIndex> List();
     }
 }

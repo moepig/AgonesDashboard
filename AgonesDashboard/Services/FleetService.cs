@@ -16,7 +16,7 @@ namespace AgonesDashboard.Services
             _fleetRepository = fleetRepository;
         }
 
-        public async Task<FleetIndex?> List()
+        public async Task<FleetIndex> List()
         {
             var list = await _fleetRepository.ListAsync();
 
