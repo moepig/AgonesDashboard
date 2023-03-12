@@ -23,5 +23,12 @@ namespace AgonesDashboard.Controllers
 
             return View(viewModel);
         }
+
+        public async Task<ViewResult> Detail(string ns, string name)
+        {
+            var viewModel = await _gameServerService.Detail(ns, name);
+
+            return View(viewModel);
+        }
     }
 }

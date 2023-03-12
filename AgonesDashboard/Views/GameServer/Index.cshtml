@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "GameServer";
 }
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Namespace</th>
@@ -35,7 +35,9 @@
                             }
                             @if (isGameServerFirst)
                             {
-                                <td rowspan="@containerCount">@gs.Name</td>
+                                <td rowspan="@containerCount">
+                                    <a asp-area="" asp-controller="GameServer" asp-action="Detail" asp-route-ns="@k" asp-route-name="@gs.Name">@gs.Name</a>
+                                </td>
                             }
                             <td>@c.Name</td>
                             <td>@c.Image</td>
@@ -62,6 +64,6 @@
     <hr />
     <details>
         <summary>viewmodel json</summary>
-        <pre>@Model.ToString()</pre>
+        <pre><code>@Model.ToString()</code></pre>
     </details>
 }

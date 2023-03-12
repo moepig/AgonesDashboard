@@ -19,6 +19,13 @@ namespace AgonesDashboard.Repositories.Kubernetes
             _client = new GenericClient(kubernetes, "agones.dev", "v1", "gameservers");
         }
 
+        public async Task<V1GameServer> GetAsync(string ns, string name)
+        {
+            var result = await _client.ReadNamespacedAsync<V1GameServer>(ns, name).ConfigureAwait(false);
+
+            return result;
+        }
+
         public async Task<CustomResourceList<V1GameServer>> ListAsync()
         {
             var result = await _client.ListAsync<CustomResourceList<V1GameServer>>().ConfigureAwait(false);
