@@ -1,7 +1,9 @@
-﻿namespace AgonesDashboard.Services
+﻿using AgonesDashboard.ViewModels.GameServer;
+
+namespace AgonesDashboard.Services
 {
     public interface IGameServerService
     {
-        public Task<ViewModels.GameServer.GameServerList?> List();
+        public Task<GameServerIndex?> List();
     }
 }

@@ -14,7 +14,7 @@ namespace AgonesDashboard.Services
             _gameServerRepository = gameServerRepository;
         }
 
-        public async Task<GameServerList?> List()
+        public async Task<GameServerIndex?> List()
         {
             var list = await _gameServerRepository.ListAsync();
 
@@ -92,7 +92,7 @@ namespace AgonesDashboard.Services
                 containerTotal.Add(k, count);
             }
 
-            var viewModel = new ViewModels.GameServer.GameServerList()
+            var viewModel = new ViewModels.GameServer.GameServerIndex()
             {
                 GameServers = gameServers,
                 ContainerTotal = containerTotal,
