@@ -1,0 +1,51 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model AgonesDashboard.ViewModels.Fleet.FleetIndex
+@{
+    ViewData["Title"] = "GameServer";
+}
+<table>
+    <thead>
+        <tr>
+            <th>Namespace</th>
+            <th>Name</th>
+            <th>GameServerName</th>
+            <th>Scheduling</th>
+            <th>ReadyReplicas</th>
+            <th>ReservedReplicas</th>
+            <th>AllocatedReplicas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var (k, v) in Model.Fleets)
+            {
+                var isNamespaceFirst = true;
+                foreach (var fleet in v)
+                {
+                    <tr>
+                        @if (isNamespaceFirst)
+                        {
+                            <td rowspan="@v.Count()">@k</td>
+                        }
+                        <td>@fleet.Name</td>
+                        <td>@fleet.GameServerName</td>
+                        <td>@fleet.Scheduling</td>
+                        <td>@fleet.ReadyReplicas</td>
+                        <td>@fleet.ReservedReplicas</td>
+                        <td>@fleet.AllocatedReplicas</td>
+                    </tr>
+                    isNamespaceFirst = false;
+                }
+            }
+        }
+    </tbody>
+</table>
+<hr />
+
+@if (hostingEnv.IsDevelopment())
+{
+    <details>
+        <summary>viewmodel json</summary>
+        <pre>@Model.ToString()</pre>
+    </details>
+}
