@@ -17,7 +17,7 @@ namespace AgonesDashboard.Models.Kubernetes
     public class CustomResource : KubernetesObject, IMetadata<V1ObjectMeta>
     {
         [JsonPropertyName("metadata")]
-        public V1ObjectMeta? Metadata { get; set; }
+        public V1ObjectMeta Metadata { get; set; }
     }
 
     public abstract class CustomResource<TSpec, TStatus> : CustomResource
