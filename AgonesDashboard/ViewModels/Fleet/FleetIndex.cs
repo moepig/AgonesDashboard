@@ -10,7 +10,6 @@ namespace AgonesDashboard.ViewModels.Fleet
     public class FleetSimple
     {
         public string? Name { get; set; }
-        public string? GameServerName { get; set; }
         public string? Scheduling { get; set; }
         public int? ReadyReplicas { get; set; }
         public int? ReservedReplicas { get; set; }

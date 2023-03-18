@@ -28,7 +28,6 @@ namespace AgonesDashboard.Services
                 var fleet = new FleetSimple
                 {
                     Name = item?.Metadata?.Name,
-                    GameServerName = item?.Spec?.Template?.Metadata?.Name,
                     Scheduling = item?.Spec?.Scheduling,
                     ReadyReplicas = item?.Status?.ReadyReplicas,
                     ReservedReplicas = item?.Status?.ReservedReplicas,
