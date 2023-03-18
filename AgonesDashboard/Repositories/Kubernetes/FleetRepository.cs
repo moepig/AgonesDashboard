@@ -25,6 +25,12 @@ namespace AgonesDashboard.Repositories.Kubernetes
 
             return result;
         }
+        public async Task<V1Fleet> GetAsync(string ns, string name)
+        {
+            var result = await _client.ReadNamespacedAsync<V1Fleet>(ns, name).ConfigureAwait(false);
+
+            return result;
+        }
     }
 
 }

@@ -1,0 +1,7 @@
+﻿@model AgonesDashboard.ViewModels.Fleet.Detail
+@{
+    ViewData["Title"] = @Model?.Fleet?.Metadata?.Name;
+}
+
+<h2>Fleet - @Model?.Fleet?.Metadata?.Name</h2>
+<pre><code>@Model?.ToString()</code></pre>
