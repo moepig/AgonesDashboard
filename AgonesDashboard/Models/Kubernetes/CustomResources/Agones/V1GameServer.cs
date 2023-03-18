@@ -59,7 +59,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
     public class V1GameServerPort
     {
         [JsonPropertyName("name")]
-        public string? name { get; set; }
+        public string? Name { get; set; }
 
         // PortPolicy (string alias)
         [JsonPropertyName("portPolicy")]
