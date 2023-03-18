@@ -62,5 +62,18 @@ namespace AgonesDashboard.Services
 
             return viewModel;
         }
+
+        public async Task<Detail> Detail(string ns, string name)
+        {
+            var fleet = await _fleetRepository.GetAsync(ns, name);
+
+            var viewModel = new Detail
+            {
+                Fleet = fleet,
+            };
+
+            return viewModel;
+        }
+
     }
 }
