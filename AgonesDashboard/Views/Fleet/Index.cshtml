@@ -27,7 +27,9 @@
                         {
                             <td rowspan="@v.Count()">@k</td>
                         }
-                        <td>@fleet.Name</td>
+                        <td>
+                            <a asp-area="" asp-controller="Fleet" asp-action="Detail" asp-route-ns="@k" asp-route-name="@fleet.Name">@fleet.Name</a>
+                        </td>
                         <td>@fleet.GameServerName</td>
                         <td>@fleet.Scheduling</td>
                         <td>@fleet.ReadyReplicas</td>
