@@ -88,7 +88,7 @@ namespace AgonesDashboard.Controllers
                         }
                     },
                     Scheduling = "Packed",
-                    Spec = new V1GameServerTemplateSpec
+                    Template = new V1GameServerTemplateSpec
                     {
                         Metadata = new V1ObjectMeta
                         {

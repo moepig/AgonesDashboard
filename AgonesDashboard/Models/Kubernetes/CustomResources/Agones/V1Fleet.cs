@@ -22,8 +22,8 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         [JsonPropertyName("scheduling")]
         public string? Scheduling { get; set; }
 
-        [JsonPropertyName("spec")]
-        public V1GameServerTemplateSpec? Spec { get; set; }
+        [JsonPropertyName("template")]
+        public V1GameServerTemplateSpec? Template { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#agones.dev/v1.FleetStatus
