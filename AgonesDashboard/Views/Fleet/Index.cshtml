@@ -8,7 +8,6 @@
         <tr>
             <th>Namespace</th>
             <th>Name</th>
-            <th>GameServerName</th>
             <th>Scheduling</th>
             <th>ReadyReplicas</th>
             <th>ReservedReplicas</th>
@@ -30,7 +29,6 @@
                         <td>
                             <a asp-area="" asp-controller="Fleet" asp-action="Detail" asp-route-ns="@k" asp-route-name="@fleet.Name">@fleet.Name</a>
                         </td>
-                        <td>@fleet.GameServerName</td>
                         <td>@fleet.Scheduling</td>
                         <td>@fleet.ReadyReplicas</td>
                         <td>@fleet.ReservedReplicas</td>

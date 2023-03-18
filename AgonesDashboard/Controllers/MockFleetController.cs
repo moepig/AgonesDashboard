@@ -26,7 +26,6 @@ namespace AgonesDashboard.Controllers
                         new FleetSimple
                         {
                             Name = "fleet1",
-                            GameServerName = "server1",
                             Scheduling = "Packed",
                             ReadyReplicas = 5,
                             ReservedReplicas = 1,
@@ -35,7 +34,6 @@ namespace AgonesDashboard.Controllers
                         new FleetSimple
                         {
                             Name = "fleet2",
-                            GameServerName = "server2",
                             Scheduling = "Distributed",
                             ReadyReplicas = 3,
                             ReservedReplicas = 0,
@@ -49,7 +47,6 @@ namespace AgonesDashboard.Controllers
                         new FleetSimple
                         {
                             Name = "fleet3",
-                            GameServerName = "server1",
                             Scheduling = "Packed",
                             ReadyReplicas = 2,
                             ReservedReplicas = 1,
