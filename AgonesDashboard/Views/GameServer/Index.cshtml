@@ -1,5 +1,7 @@
-﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
-@model AgonesDashboard.ViewModels.GameServer.GameServerIndex
+﻿@using AgonesDashboard.ViewModels.GameServer
+@using Microsoft.AspNetCore.Mvc.Rendering 
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model GameServerIndex
 @{
     ViewData["Title"] = "GameServer";
 }
@@ -15,6 +17,7 @@
             <th>Host port</th>
             <th>Container port</th>
             <th>Protocol</th>
+            <th>Operation</th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +29,7 @@
                 {
                     var isGameServerFirst = true;
                     var containerCount = gs.GameServerSimpleContainer?.Count();
-                    foreach (var c in gs.GameServerSimpleContainer)
+                    foreach (var c in gs.GameServerSimpleContainer ?? new List<GameServerSimpleContainer>())
                     {
                         <tr>
                             @if (isNamespaceFirst)
@@ -48,6 +51,12 @@
                                 <td rowspan="@containerCount">@gs.HostPort</td>
                                 <td rowspan="@containerCount">@gs.ContainerPort</td>
                                 <td rowspan="@containerCount">@gs.Protocol</td>
+                                <td rowspan="@containerCount">
+                                    <form asp-area="" asp-controller="GameServer" asp-action="Delete" asp-route-ns="@k" asp-route-name="@gs.Name" method="post">
+                                        <input type="hidden" name="name" value="@gs.Name" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
                             }
                         </tr>
                         isGameServerFirst = false;

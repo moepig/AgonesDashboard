@@ -30,5 +30,13 @@ namespace AgonesDashboard.Controllers
 
             return View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<ViewResult> Delete(string ns, string name)
+        {
+            var viewModel = await _gameServerService.Delete(ns, name);
+
+            return View(viewModel);
+        }
     }
 }

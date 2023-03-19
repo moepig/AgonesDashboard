@@ -6,5 +6,6 @@ namespace AgonesDashboard.Services
     {
         public Task<GameServerIndex> List();
         public Task<Detail> Detail(string ns, string name);
+        public Task<Delete> Delete(string ns, string name);
     }
 }

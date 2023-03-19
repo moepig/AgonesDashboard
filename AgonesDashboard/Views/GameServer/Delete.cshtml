@@ -1,0 +1,21 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model AgonesDashboard.ViewModels.GameServer.Delete
+@{
+    ViewData["Title"] = @Model?.GameServer?.Metadata?.Name;
+}
+
+<h2>GameServer - @Model?.GameServer?.Metadata?.Name</h2>
+削除要求が発行されました。
+<br />
+削除が完了するまで時間がかかる場合があります。
+<br />
+<br />
+<a asp-area="" asp-controller="GameServer" asp-action="Index">一覧へ戻る</a>
+@if (hostingEnv.IsDevelopment())
+{
+    <hr />
+    <details>
+        <summary>viewmodel json</summary>
+        <pre><code>@Model?.ToString()</code></pre>
+    </details>
+}

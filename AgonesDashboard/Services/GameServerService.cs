@@ -107,5 +107,16 @@ namespace AgonesDashboard.Services
 
             return viewModel;
         }
+        public async Task<Delete> Delete(string ns, string name)
+        {
+            var gameServer = await _gameServerRepository.DeleteAsync(ns, name);
+
+            var viewModel = new Delete
+            {
+                GameServer = gameServer,
+            };
+
+            return viewModel;
+        }
     }
 }
