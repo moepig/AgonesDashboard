@@ -1,4 +1,4 @@
-namespace AgonesDashboard.Models
+namespace AgonesDashboard.ViewModels
 {
     public class ErrorViewModel
     {

@@ -1,4 +1,4 @@
-﻿using AgonesDashboard.Models;
+﻿using AgonesDashboard.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
