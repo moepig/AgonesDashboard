@@ -7,5 +7,6 @@ namespace AgonesDashboard.Repositories
     {
         public Task<CustomResourceList<V1GameServer>> ListAsync();
         public Task<V1GameServer> GetAsync(string ns, string name);
+        public Task<V1GameServer> DeleteAsync(string ns, string name);
     }
 }

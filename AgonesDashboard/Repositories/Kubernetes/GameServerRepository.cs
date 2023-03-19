@@ -32,5 +32,12 @@ namespace AgonesDashboard.Repositories.Kubernetes
 
             return result;
         }
+
+        public async Task<V1GameServer> DeleteAsync(string ns, string name)
+        {
+            var result = await _client.DeleteNamespacedAsync<V1GameServer>(ns, name).ConfigureAwait(false);
+
+            return result;
+        }
     }
 }
