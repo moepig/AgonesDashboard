@@ -57,11 +57,9 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#allocation.agones.dev/v1.GameServerSelector
-    public class V1GameServerSelector
+    // Members of LabelSelector are embedded into this type.
+    public class V1GameServerSelector : V1LabelSelector
     {
-        [JsonPropertyName("LabelSelector")]
-        public V1LabelSelector? LabelSelector { get; set; }
-
         // GameServerAllocationState (string alias)
         [JsonPropertyName("gameServerState")]
         public string? GameServerState { get; set; }
