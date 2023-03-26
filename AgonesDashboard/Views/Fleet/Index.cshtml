@@ -12,6 +12,7 @@
             <th>ReadyReplicas</th>
             <th>ReservedReplicas</th>
             <th>AllocatedReplicas</th>
+            <th>Operation</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +34,11 @@
                         <td>@fleet.ReadyReplicas</td>
                         <td>@fleet.ReservedReplicas</td>
                         <td>@fleet.AllocatedReplicas</td>
+                        <td>
+                            <form asp-area="" asp-controller="Fleet" asp-action="Allocate" asp-route-ns="@k" asp-route-fleetName="@fleet.Name" method="post">
+                                <button type="submit" class="btn btn-outline-primary btn-sm">Allocate</button>
+                            </form>
+                        </td>
                     </tr>
                     isNamespaceFirst = false;
                 }

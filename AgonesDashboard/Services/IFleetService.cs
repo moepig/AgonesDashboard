@@ -6,5 +6,6 @@ namespace AgonesDashboard.Services
     {
         public Task<FleetIndex> List();
         public Task<Detail> Detail(string ns, string name);
+        public Task<Allocation> Allocate(string ns, string fleetName);
     }
 }
