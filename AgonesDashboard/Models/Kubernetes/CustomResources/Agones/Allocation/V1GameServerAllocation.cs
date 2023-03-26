@@ -39,7 +39,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
         [JsonPropertyName("state")]
         public string? State { get; set; }
 
-        [JsonPropertyName("GameServerName")]
+        [JsonPropertyName("gameServerName")]
         public string? GameServerName { get; set; }
 
         [JsonPropertyName("ports")]
