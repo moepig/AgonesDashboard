@@ -1,6 +1,8 @@
 ﻿using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
+using AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation;
 using AgonesDashboard.Repositories;
 using AgonesDashboard.ViewModels.Fleet;
+using k8s.Models;
 using static AgonesDashboard.ViewModels.Fleet.FleetIndex;
 
 namespace AgonesDashboard.Services
@@ -9,11 +11,13 @@ namespace AgonesDashboard.Services
     {
         private readonly ILogger<FleetService> _logger;
         private readonly IFleetRepository _fleetRepository;
+        private readonly IGameServerAllocationRepository _gameServerAllocationRepository;
 
-        public FleetService(ILogger<FleetService> logger, IFleetRepository fleetRepository)
+        public FleetService(ILogger<FleetService> logger, IFleetRepository fleetRepository, IGameServerAllocationRepository gameServerAllocationRepository)
         {
             _logger = logger;
             _fleetRepository = fleetRepository;
+            _gameServerAllocationRepository = gameServerAllocationRepository;
         }
 
         public async Task<FleetIndex> List()
@@ -74,5 +78,35 @@ namespace AgonesDashboard.Services
             return viewModel;
         }
 
+        public async Task<Allocation> Allocate(string ns, string fleetName)
+        {
+            var gsAllocate = new V1GameServerAllocation
+            {
+                ApiVersion = "allocation.agones.dev/v1",
+                Kind = "GameServerAllocation",
+                Spec = new V1GameServerAllocationSpec
+                {
+                    Selectors = new List<V1GameServerSelector>
+                    {
+                        new V1GameServerSelector
+                        {
+                            MatchLabels =  new Dictionary<string, string>
+                                {
+                                    {"agones.dev/fleet", fleetName},
+                                }
+                        }
+                    }
+                }
+            };
+
+            var allocation = await _gameServerAllocationRepository.CreateAsync(ns, gsAllocate);
+
+            var viewModel = new Allocation
+            {
+                GameServerAllocation = allocation,
+            };
+
+            return viewModel;
+        }
     }
 }

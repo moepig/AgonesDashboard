@@ -29,5 +29,13 @@ namespace AgonesDashboard.Controllers
 
             return View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<ViewResult> Allocate(string ns, string fleetName)
+        {
+            var viewModel = await _fleetService.Allocate(ns, fleetName);
+
+            return View(viewModel);
+        }
     }
 }
