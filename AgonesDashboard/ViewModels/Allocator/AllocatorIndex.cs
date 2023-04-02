@@ -12,6 +12,6 @@
         public string ExternalName;
         public IList<string> ClusterIPs;
         public IList<string> ExternalIPs;
-        public IList<int> Ports;
+        public IList<string> Ports;
     }
 }

@@ -28,7 +28,7 @@ namespace AgonesDashboard.Services
                     ExternalName = service.Spec.ExternalName,
                     ExternalIPs = service.Spec.ExternalIPs ?? new List<string>(),
                     ClusterIPs = service.Spec.ClusterIPs ?? new List<string>(),
-                    Ports = service.Spec.Ports?.Select(x => x.Port).ToList() ?? new List<int>(),
+                    Ports = service.Spec.Ports?.Select(x => $"{x.Port}/{x.Protocol}").ToList() ?? new List<string>(),
                 };
 
                 list.Add(item);
