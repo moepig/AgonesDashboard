@@ -10,8 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IGameServerRepository, GameServerRepository>();
 builder.Services.AddScoped<IFleetRepository, FleetRepository>();
 builder.Services.AddScoped<IGameServerAllocationRepository, GameServerAllocationRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IGameServerService, GameServerService>();
 builder.Services.AddScoped<IFleetService, FleetService>();
+builder.Services.AddScoped<IServiceService, ServiceService>();
 
 var app = builder.Build();
 
