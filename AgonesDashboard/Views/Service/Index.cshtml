@@ -1,0 +1,57 @@
+﻿@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model AgonesDashboard.ViewModels.Allocator.AllocatorIndex
+@{
+    ViewData["Title"] = "Allocator";
+}
+namespace: @Model.Namespace
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>ExternalName</th>
+            <th>ExternalIPs</th>
+            <th>ClusterIPs</th>
+            <th>Ports</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var allocator in Model.Allocators)
+        {
+            <tr>
+                <td>@allocator.Name
+                <td>@allocator.ExternalName</td>
+                <td>
+                        @foreach (var ip in allocator.ExternalIPs)
+                        {
+                            @ip
+                        <br />
+                        }
+                </td>
+                <td>
+                        @foreach (var ip in allocator.ClusterIPs)
+                        {
+                            @ip
+                        <br />
+                        }
+                </td>
+                <td>
+                        @foreach (var ip in allocator.Ports)
+                        {
+                            @ip
+                        <br />
+                        }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+
+@if (hostingEnv.IsDevelopment())
+{
+    <details>
+        <summary>viewmodel json</summary>
+        <pre>@Model.ToString()</pre>
+    </details>
+}
