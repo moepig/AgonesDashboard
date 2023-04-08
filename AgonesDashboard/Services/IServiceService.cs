@@ -1,9 +1,9 @@
-﻿using AgonesDashboard.ViewModels.Allocator;
+﻿using AgonesDashboard.ViewModels.Service;
 
 namespace AgonesDashboard.Services
 {
     public interface IServiceService
     {
-        public Task<AllocatorIndex> List();
+        public Task<ServiceIndex> List();
     }
 }
