@@ -120,6 +120,54 @@
   <data name="DevelopmentViewModelJson" xml:space="preserve">
     <value>ViewModel の JSON を表示</value>
   </data>
+  <data name="FleetAllocatedReplicas" xml:space="preserve">
+    <value>AllocatedReplicas</value>
+  </data>
+  <data name="FleetName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="FleetOperation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="FleetReadyReplicas" xml:space="preserve">
+    <value>ReadyReplicas</value>
+  </data>
+  <data name="FleetReservedReplicas" xml:space="preserve">
+    <value>ReservedReplicas</value>
+  </data>
+  <data name="FleetScheduling" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="GameServerAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="GameServerContainerImage" xml:space="preserve">
+    <value>Container image</value>
+  </data>
+  <data name="GameServerContainerName" xml:space="preserve">
+    <value>Container name</value>
+  </data>
+  <data name="GameServerContainerPort" xml:space="preserve">
+    <value>Container port</value>
+  </data>
+  <data name="GameServerHostPort" xml:space="preserve">
+    <value>Host port</value>
+  </data>
+  <data name="GameServerName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="GameServerOperation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="GameServerProtocol" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="GameServerState" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Hogetarou" xml:space="preserve">
+    <value>unko</value>
+  </data>
   <data name="Namespace" xml:space="preserve">
     <value>namespace</value>
   </data>
