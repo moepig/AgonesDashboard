@@ -1,11 +1,16 @@
 using AgonesDashboard.Repositories;
 using AgonesDashboard.Repositories.Kubernetes;
 using AgonesDashboard.Services;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = ""; });
+//builder.Services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
 
 builder.Services.AddScoped<IGameServerRepository, GameServerRepository>();
 builder.Services.AddScoped<IFleetRepository, FleetRepository>();
@@ -24,6 +29,19 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+var supportedCultures = new[]
+  {
+    new CultureInfo("ja-JP"),
+    new CultureInfo("en-US"),
+  };
+
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("en-US"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
