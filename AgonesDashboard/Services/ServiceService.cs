@@ -1,5 +1,5 @@
 ﻿using AgonesDashboard.Repositories;
-using AgonesDashboard.ViewModels.Allocator;
+using AgonesDashboard.ViewModels.Service;
 
 namespace AgonesDashboard.Services
 {
@@ -14,15 +14,15 @@ namespace AgonesDashboard.Services
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<AllocatorIndex> List()
+        public async Task<ServiceIndex> List()
         {
             var ns = _configuration.GetValue("Agones:Namespace", "agones-system");
             var services = await _serviceRepository.ListAsync(ns);
-            var list = new List<AllocatorSimple>();
+            var list = new List<ServiceSimple>();
 
             foreach (var service in services.Items)
             {
-                var item = new AllocatorSimple
+                var item = new ServiceSimple
                 {
                     Name = service.Metadata.Name,
                     ExternalName = service.Spec.ExternalName,
@@ -34,7 +34,7 @@ namespace AgonesDashboard.Services
                 list.Add(item);
             }
 
-            var viewModel = new AllocatorIndex
+            var viewModel = new ServiceIndex
             {
                 Namespace = ns,
                 Allocators = list,

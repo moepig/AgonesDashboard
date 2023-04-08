@@ -1,12 +1,12 @@
-﻿namespace AgonesDashboard.ViewModels.Allocator
+﻿namespace AgonesDashboard.ViewModels.Service
 {
-    public class AllocatorIndex
+    public class ServiceIndex
     {
         public string Namespace;
-        public IList<AllocatorSimple> Allocators;
+        public IList<ServiceSimple> Allocators;
     }
 
-    public class AllocatorSimple
+    public class ServiceSimple
     {
         public string Name;
         public string ExternalName;
