@@ -165,9 +165,6 @@
   <data name="GameServerState" xml:space="preserve">
     <value>State</value>
   </data>
-  <data name="Hogetarou" xml:space="preserve">
-    <value>unko</value>
-  </data>
   <data name="Namespace" xml:space="preserve">
     <value>Namespace</value>
   </data>
