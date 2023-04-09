@@ -10,13 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix, opts => { opts.ResourcesPath = ""; });
-//builder.Services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
 
 builder.Services.AddScoped<IGameServerRepository, GameServerRepository>();
+builder.Services.AddScoped<IGameServerSetRepository, GameServerSetRepository>();
 builder.Services.AddScoped<IFleetRepository, FleetRepository>();
 builder.Services.AddScoped<IGameServerAllocationRepository, GameServerAllocationRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IGameServerService, GameServerService>();
+builder.Services.AddScoped<IGameServerSetService, GameServerSetService>();
 builder.Services.AddScoped<IFleetService, FleetService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
 

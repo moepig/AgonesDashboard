@@ -1,0 +1,54 @@
+﻿@using AgonesDashboard.ViewModels.GameServer
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@model AgonesDashboard.ViewModels.GameServerSet.GameServerSetIndex
+@{
+    ViewData["Title"] = "GameServerSet";
+}
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>@Localizer["Namespace"]</th>
+            <th>@Localizer["GameServerSetName"]</th>
+            <th>@Localizer["GameServerSetScheduling"]</th>
+            <th>@Localizer["GameServerSetReadyReplicas"]</th>
+            <th>@Localizer["GameServerSetReservedReplicas"]</th>
+            <th>@Localizer["GameServerSetAllocatedReplicas"]</th>
+            <th>@Localizer["GameServerSetShutdownReplicas"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var (k, v) in Model.GameServerSets)
+            {
+                var isNamespaceFirst = true;
+                foreach (var gsSet in v)
+                {
+                    <tr>
+                        @if (isNamespaceFirst)
+                        {
+                            <td rowspan="@v.Count()">@k</td>
+                        }
+                        <td>
+                            <a asp-area="" asp-controller="GameServerSet" asp-action="Detail" asp-route-ns="@k" asp-route-name="@gsSet.Name">@gsSet.Name</a>
+                        </td>
+                        <td>@gsSet.Scheduling</td>
+                        <td>@gsSet.ReadyReplicas</td>
+                        <td>@gsSet.ReservedReplicas</td>
+                        <td>@gsSet.AllocatedReplicas</td>
+                        <td>@gsSet.ShutdownReplicas</td>
+                    </tr>
+                    isNamespaceFirst = false;
+                }
+            }
+        }
+    </tbody>
+</table>
+<hr />
+
+@if (hostingEnv.IsDevelopment())
+{
+    <details>
+        <summary>viewmodel json</summary>
+        <pre>@Model.ToString()</pre>
+    </details>
+}

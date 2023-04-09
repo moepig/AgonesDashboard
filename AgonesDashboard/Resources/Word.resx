@@ -162,6 +162,24 @@
   <data name="GameServerProtocol" xml:space="preserve">
     <value>Protocol</value>
   </data>
+  <data name="GameServerSetAllocatedReplicas" xml:space="preserve">
+    <value>AllocatedReplicas</value>
+  </data>
+  <data name="GameServerSetName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="GameServerSetReadyReplicas" xml:space="preserve">
+    <value>ReadyReplicas</value>
+  </data>
+  <data name="GameServerSetReservedReplicas" xml:space="preserve">
+    <value>ReservedReplicas</value>
+  </data>
+  <data name="GameServerSetScheduling" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="GameServerSetShutdownReplicas" xml:space="preserve">
+    <value>ShutdownReplicas</value>
+  </data>
   <data name="GameServerState" xml:space="preserve">
     <value>State</value>
   </data>
@@ -178,7 +196,7 @@
     <value>External name</value>
   </data>
   <data name="ServiceName" xml:space="preserve">
-    <value>Name</value>
+    <value>Service name</value>
   </data>
   <data name="ServicePorts" xml:space="preserve">
     <value>Port</value>
