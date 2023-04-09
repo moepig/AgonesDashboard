@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="DevelopmentViewModelJson" xml:space="preserve">
-    <value>ViewModel の JSON を表示</value>
+    <value>ViewModelのJSONを表示</value>
   </data>
   <data name="FleetAllocatedReplicas" xml:space="preserve">
     <value>AllocatedReplicas</value>
@@ -162,11 +162,29 @@
   <data name="GameServerProtocol" xml:space="preserve">
     <value>Protocol</value>
   </data>
+  <data name="GameServerSetAllocatedReplicas" xml:space="preserve">
+    <value>AllocatedReplicas</value>
+  </data>
+  <data name="GameServerSetName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="GameServerSetReadyReplicas" xml:space="preserve">
+    <value>ReadyReplicas</value>
+  </data>
+  <data name="GameServerSetReservedReplicas" xml:space="preserve">
+    <value>ReservedReplicas</value>
+  </data>
+  <data name="GameServerSetScheduling" xml:space="preserve">
+    <value>Scheduling</value>
+  </data>
+  <data name="GameServerSetShutdownReplicas" xml:space="preserve">
+    <value>ShutdownReplicas</value>
+  </data>
   <data name="GameServerState" xml:space="preserve">
     <value>State</value>
   </data>
   <data name="Namespace" xml:space="preserve">
-    <value>namespace</value>
+    <value>Namespace</value>
   </data>
   <data name="ServiceClusterIPs" xml:space="preserve">
     <value>クラスターIP</value>
@@ -178,7 +196,7 @@
     <value>外部FQDN</value>
   </data>
   <data name="ServiceName" xml:space="preserve">
-    <value>サービス名</value>
+    <value>Service名</value>
   </data>
   <data name="ServicePorts" xml:space="preserve">
     <value>ポート</value>
