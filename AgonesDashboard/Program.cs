@@ -33,7 +33,7 @@ if (!app.Environment.IsDevelopment())
 
 var supportedCultures = new[]
   {
-    new CultureInfo("ja-JP"),
+    new CultureInfo("ja"),
     new CultureInfo("en-US"),
   };
 
