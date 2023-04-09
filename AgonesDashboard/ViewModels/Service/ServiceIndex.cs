@@ -1,6 +1,6 @@
 ﻿namespace AgonesDashboard.ViewModels.Service
 {
-    public class ServiceIndex
+    public class ServiceIndex : AbstractViewModel
     {
         public string Namespace;
         public IList<ServiceSimple> Allocators;
