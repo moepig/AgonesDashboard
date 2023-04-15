@@ -27,7 +27,6 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
         [JsonPropertyName("scheduling")]
         public string? Scheduling { get; set; }
 
-
         [JsonPropertyName("metadata")]
         public V1MetaPatch? Metadata { get; set; }
     }
@@ -48,7 +47,6 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
         [JsonPropertyName("address")]
         public string? Address { get; set; }
 
-
         [JsonPropertyName("nodeName")]
         public string? NodeName { get; set; }
 
@@ -63,7 +61,6 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation
         // GameServerAllocationState (string alias)
         [JsonPropertyName("gameServerState")]
         public string? GameServerState { get; set; }
-
 
         [JsonPropertyName("players")]
         public V1PlayerSelector? Players { get; set; }
