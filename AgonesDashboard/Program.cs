@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews()
 builder.Services.AddScoped<IGameServerRepository, GameServerRepository>();
 builder.Services.AddScoped<IGameServerSetRepository, GameServerSetRepository>();
 builder.Services.AddScoped<IFleetRepository, FleetRepository>();
+builder.Services.AddScoped<IFleetAutoscalerRepository, FleetAutoscalerRepository>();
 builder.Services.AddScoped<IGameServerAllocationRepository, GameServerAllocationRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IGameServerService, GameServerService>();
