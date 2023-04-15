@@ -83,7 +83,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.AutoScaling
 
         // k8s.io/apimachinery/pkg/util/intstr.IntOrString
         [JsonPropertyName("bufferSize")]
-        public string? BufferSize { get; set; }
+        public IntstrIntOrString? BufferSize { get; set; }
     }
 
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#autoscaling.agones.dev/v1.WebhookPolicy
