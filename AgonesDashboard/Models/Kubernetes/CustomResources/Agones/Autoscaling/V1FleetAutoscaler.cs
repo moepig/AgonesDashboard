@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones.AutoScaling
 {
     // https://agones.dev/site/docs/reference/agones_crd_api_reference/#autoscaling.agones.dev/v1.FleetAutoscaler
-    public class V1FleetAutoscaler<V1FleetAutoscalerSpec, V1FleetAutoscalerStatus>
+    public class V1FleetAutoscaler : CustomResource<V1FleetAutoscalerSpec, V1FleetAutoscalerStatus>
     {
     }
 
