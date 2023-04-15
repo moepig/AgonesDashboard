@@ -14,5 +14,6 @@ namespace AgonesDashboard.ViewModels.Fleet
         public int? ReadyReplicas { get; set; }
         public int? ReservedReplicas { get; set; }
         public int? AllocatedReplicas { get; set; }
+        public bool IsAutoscalerEnabled { get; set; }
     }
 }

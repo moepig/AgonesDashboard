@@ -12,6 +12,7 @@
             <th>@Localizer["FleetReadyReplicas"]</th>
             <th>@Localizer["FleetReservedReplicas"]</th>
             <th>@Localizer["FleetAllocatedReplicas"]</th>
+            <th>@Localizer["FleetAutoscaler"]</th>
             <th>@Localizer["FleetOperation"]</th>
         </tr>
     </thead>
@@ -34,6 +35,16 @@
                         <td>@fleet.ReadyReplicas</td>
                         <td>@fleet.ReservedReplicas</td>
                         <td>@fleet.AllocatedReplicas</td>
+                        <td>
+                            @if (@fleet.IsAutoscalerEnabled)
+                            {
+                                <span>🟢</span>
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </td>
                         <td>
                             <form asp-area="" asp-controller="Fleet" asp-action="Allocate" asp-route-ns="@k" asp-route-fleetName="@fleet.Name" method="post">
                                 <button type="submit" class="btn btn-outline-primary btn-sm">Allocate</button>

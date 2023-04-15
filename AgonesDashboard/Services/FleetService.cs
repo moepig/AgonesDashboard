@@ -1,5 +1,6 @@
 ﻿using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
 using AgonesDashboard.Models.Kubernetes.CustomResources.Agones.Allocation;
+using AgonesDashboard.Models.Kubernetes.CustomResources.Agones.AutoScaling;
 using AgonesDashboard.Repositories;
 using AgonesDashboard.ViewModels.Fleet;
 using k8s.Models;
@@ -12,30 +13,48 @@ namespace AgonesDashboard.Services
         private readonly ILogger<FleetService> _logger;
         private readonly IFleetRepository _fleetRepository;
         private readonly IGameServerAllocationRepository _gameServerAllocationRepository;
+        private readonly IFleetAutoscalerRepository _fleetAutoscalerRepository;
 
-        public FleetService(ILogger<FleetService> logger, IFleetRepository fleetRepository, IGameServerAllocationRepository gameServerAllocationRepository)
+        public FleetService(ILogger<FleetService> logger, IFleetRepository fleetRepository, IGameServerAllocationRepository gameServerAllocationRepository, IFleetAutoscalerRepository fleetAutoscalerRepository)
         {
             _logger = logger;
             _fleetRepository = fleetRepository;
             _gameServerAllocationRepository = gameServerAllocationRepository;
+            _fleetAutoscalerRepository = fleetAutoscalerRepository;
         }
 
         public async Task<FleetIndex> List()
         {
-            var list = await _fleetRepository.ListAsync();
+            // fleet 名 - autoscaler な組を作成
+            // OPTIMIZE: リポジトリ呼び出しの並列化がよい
+            var autoscalerResources = await _fleetAutoscalerRepository.ListAsync();
+            var autoscalers = new Dictionary<string, V1FleetAutoscaler>();
+
+            foreach (var autoscaler in autoscalerResources.Items ?? new List<V1FleetAutoscaler>())
+            {
+                var targetFleet = autoscaler?.Spec?.FleetName;
+                if (targetFleet != null) {
+                    autoscalers.Add(targetFleet, autoscaler);
+                }
+            }
+
+            // OPTIMIZE: リポジトリ呼び出しの並列化がよい
+            var fleetResources = await _fleetRepository.ListAsync();
 
             // <namespace, その namespace の Fleet 一覧> な Dictionary
             var fleets = new Dictionary<string, IList<FleetSimple>>();
 
-            foreach (var item in list.Items ?? new List<V1Fleet>())
+            foreach (var item in fleetResources.Items ?? new List<V1Fleet>())
             {
+                var fleetName = item?.Metadata?.Name;
                 var fleet = new FleetSimple
                 {
-                    Name = item?.Metadata?.Name,
+                    Name = fleetName,
                     Scheduling = item?.Spec?.Scheduling,
                     ReadyReplicas = item?.Status?.ReadyReplicas,
                     ReservedReplicas = item?.Status?.ReservedReplicas,
                     AllocatedReplicas = item?.Status?.AllocatedReplicas,
+                    IsAutoscalerEnabled = fleetName != null ? autoscalers.ContainsKey(fleetName) : false,
                 };
 
                 // 後続処理のための事前 null チェック
