@@ -4,6 +4,6 @@ namespace AgonesDashboard.Services
 {
     public interface IServiceService
     {
-        public Task<ServiceIndex> List();
+        public Task<ServiceIndex> ListAsync();
     }
 }

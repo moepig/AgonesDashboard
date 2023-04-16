@@ -18,7 +18,7 @@ namespace AgonesDashboard.Controllers
         }
         public async Task<ViewResult> Index()
         {
-            var viewModel = await _serviceService.List();
+            var viewModel = await _serviceService.ListAsync();
 
             return View(viewModel);
         }

@@ -19,14 +19,14 @@ namespace AgonesDashboard.Controllers
 
         public async Task<ViewResult> Index()
         {
-            var viewModel = await _gameServerService.List();
+            var viewModel = await _gameServerService.ListAsync();
 
             return View(viewModel);
         }
 
         public async Task<ViewResult> Detail(string ns, string name)
         {
-            var viewModel = await _gameServerService.Detail(ns, name);
+            var viewModel = await _gameServerService.DetailAsync(ns, name);
 
             return View(viewModel);
         }
@@ -34,7 +34,7 @@ namespace AgonesDashboard.Controllers
         [HttpPost]
         public async Task<ViewResult> Delete(string ns, string name)
         {
-            var viewModel = await _gameServerService.Delete(ns, name);
+            var viewModel = await _gameServerService.DeleteAsync(ns, name);
 
             return View(viewModel);
         }

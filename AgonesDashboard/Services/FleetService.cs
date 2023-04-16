@@ -23,7 +23,7 @@ namespace AgonesDashboard.Services
             _fleetAutoscalerRepository = fleetAutoscalerRepository;
         }
 
-        public async Task<FleetIndex> List()
+        public async Task<FleetIndex> ListAsync()
         {
             // fleet 名 - autoscaler な組を作成
             // OPTIMIZE: リポジトリ呼び出しの並列化がよい
@@ -49,11 +49,11 @@ namespace AgonesDashboard.Services
                 var fleetName = item?.Metadata?.Name;
                 var fleet = new FleetSimple
                 {
-                    Name = fleetName,
-                    Scheduling = item?.Spec?.Scheduling,
-                    ReadyReplicas = item?.Status?.ReadyReplicas,
-                    ReservedReplicas = item?.Status?.ReservedReplicas,
-                    AllocatedReplicas = item?.Status?.AllocatedReplicas,
+                    Name = fleetName ?? "error",
+                    Scheduling = item?.Spec?.Scheduling ?? "error",
+                    ReadyReplicas = item?.Status?.ReadyReplicas ?? -1,
+                    ReservedReplicas = item?.Status?.ReservedReplicas ?? -1,
+                    AllocatedReplicas = item?.Status?.AllocatedReplicas ?? -1,
                     IsAutoscalerEnabled = fleetName != null ? autoscalers.ContainsKey(fleetName) : false,
                 };
 
@@ -85,7 +85,7 @@ namespace AgonesDashboard.Services
             return viewModel;
         }
 
-        public async Task<Detail> Detail(string ns, string name)
+        public async Task<Detail> DetailAsync(string ns, string name)
         {
             var fleet = await _fleetRepository.GetAsync(ns, name);
 
@@ -97,7 +97,7 @@ namespace AgonesDashboard.Services
             return viewModel;
         }
 
-        public async Task<Allocation> Allocate(string ns, string fleetName)
+        public async Task<Allocation> AllocateAsync(string ns, string fleetName)
         {
             var gsAllocate = new V1GameServerAllocation
             {

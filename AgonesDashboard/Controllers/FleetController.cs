@@ -19,13 +19,13 @@ namespace AgonesDashboard.Controllers
 
         public async Task<ViewResult> Index()
         {
-            var viewModel = await _fleetService.List();
+            var viewModel = await _fleetService.ListAsync();
 
             return View(viewModel);
         }
         public async Task<ViewResult> Detail(string ns, string name)
         {
-            var viewModel = await _fleetService.Detail(ns, name);
+            var viewModel = await _fleetService.DetailAsync(ns, name);
 
             return View(viewModel);
         }
@@ -33,7 +33,7 @@ namespace AgonesDashboard.Controllers
         [HttpPost]
         public async Task<ViewResult> Allocate(string ns, string fleetName)
         {
-            var viewModel = await _fleetService.Allocate(ns, fleetName);
+            var viewModel = await _fleetService.AllocateAsync(ns, fleetName);
 
             return View(viewModel);
         }

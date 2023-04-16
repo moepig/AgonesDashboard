@@ -15,19 +15,7 @@ namespace AgonesDashboard.Services
             _gameServerRepository = gameServerRepository;
         }
 
-        public async Task<Detail> Detail(string ns, string name)
-        {
-            var gameServer = await _gameServerRepository.GetAsync(ns, name);
-
-            var viewModel = new Detail
-            {
-                GameServer = gameServer,
-            };
-
-            return viewModel;
-        }
-
-        public async Task<GameServerIndex> List()
+        public async Task<GameServerIndex> ListAsync()
         {
             var list = await _gameServerRepository.ListAsync();
 
@@ -62,13 +50,13 @@ namespace AgonesDashboard.Services
 
                 var gameServer = new GameServerSimple
                 {
-                    Name = item.Metadata?.Name,
+                    Name = item.Metadata?.Name ?? "error",
                     GameServerSimpleContainer = simpleContainers,
-                    Address = item.Status?.Address,
-                    ContainerPort = port?.ContainerPort,
-                    HostPort = port?.HostPort,
-                    Protocol = port?.Protocol,
-                    State = item.Status?.State,
+                    Address = item.Status?.Address ?? "error",
+                    ContainerPort = port?.ContainerPort ?? -1,
+                    HostPort = port?.HostPort ?? -1,
+                    Protocol = port?.Protocol ?? "error",
+                    State = item.Status?.State ?? "error",
                 };
 
                 // 後続処理のための事前 null チェック
@@ -107,7 +95,19 @@ namespace AgonesDashboard.Services
 
             return viewModel;
         }
-        public async Task<Delete> Delete(string ns, string name)
+        public async Task<Detail> DetailAsync(string ns, string name)
+        {
+            var gameServer = await _gameServerRepository.GetAsync(ns, name);
+
+            var viewModel = new Detail
+            {
+                GameServer = gameServer,
+            };
+
+            return viewModel;
+        }
+
+        public async Task<Delete> DeleteAsync(string ns, string name)
         {
             var gameServer = await _gameServerRepository.DeleteAsync(ns, name);
 

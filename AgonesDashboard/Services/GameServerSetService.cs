@@ -15,7 +15,7 @@ namespace AgonesDashboard.Services
             _gameServerSetRepository = gameServerSetRepository;
         }
 
-        public async Task<GameServerSetIndex> List()
+        public async Task<GameServerSetIndex> ListAsync()
         {
             var list = await _gameServerSetRepository.ListAsync();
 
@@ -26,12 +26,12 @@ namespace AgonesDashboard.Services
             {
                 var gsSet = new GameServerSetSimple
                 {
-                    Name = item?.Metadata?.Name,
-                    Scheduling = item?.Spec?.Scheduling,
-                    ReadyReplicas = item?.Status?.ReadyReplicas,
-                    ReservedReplicas = item?.Status?.ReservedReplicas,
-                    AllocatedReplicas = item?.Status?.AllocatedReplicas,
-                    ShutdownReplicas = item?.Status?.ShutdownReplicas,
+                    Name = item?.Metadata?.Name ?? "error",
+                    Scheduling = item?.Spec?.Scheduling ?? "error",
+                    ReadyReplicas = item?.Status?.ReadyReplicas ?? -1,
+                    ReservedReplicas = item?.Status?.ReservedReplicas ?? -1,
+                    AllocatedReplicas = item?.Status?.AllocatedReplicas ?? -1,
+                    ShutdownReplicas = item?.Status?.ShutdownReplicas ?? -1,
 
                 };
 
@@ -63,7 +63,7 @@ namespace AgonesDashboard.Services
             return viewModel;
         }
 
-        public async Task<Detail> Detail(string ns, string name)
+        public async Task<Detail> DetailAsync(string ns, string name)
         {
             var gsSet = await _gameServerSetRepository.GetAsync(ns, name);
 

@@ -4,7 +4,7 @@ namespace AgonesDashboard.Services
 {
     public interface IGameServerSetService
     {
-        public Task<GameServerSetIndex> List();
-        public Task<Detail> Detail(string ns, string name);
+        public Task<GameServerSetIndex> ListAsync();
+        public Task<Detail> DetailAsync(string ns, string name);
     }
 }
