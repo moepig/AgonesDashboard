@@ -14,7 +14,7 @@ namespace AgonesDashboard.Services
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<ServiceIndex> List()
+        public async Task<ServiceIndex> ListAsync()
         {
             var ns = _configuration.GetValue("Agones:Namespace", "agones-system");
             var services = await _serviceRepository.ListAsync(ns);

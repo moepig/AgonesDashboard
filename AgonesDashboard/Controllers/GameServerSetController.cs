@@ -19,13 +19,13 @@ namespace AgonesDashboard.Controllers
 
         public async Task<ViewResult> Index()
         {
-            var viewModel = await _gameServerSetService.List();
+            var viewModel = await _gameServerSetService.ListAsync();
 
             return View(viewModel);
         }
         public async Task<ViewResult> Detail(string ns, string name)
         {
-            var viewModel = await _gameServerSetService.Detail(ns, name);
+            var viewModel = await _gameServerSetService.DetailAsync(ns, name);
 
             return View(viewModel);
         }
