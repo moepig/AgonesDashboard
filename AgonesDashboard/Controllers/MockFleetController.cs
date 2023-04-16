@@ -29,7 +29,8 @@ namespace AgonesDashboard.Controllers
                             Scheduling = "Packed",
                             ReadyReplicas = 5,
                             ReservedReplicas = 1,
-                            AllocatedReplicas = 6
+                            AllocatedReplicas = 6,
+                            IsAutoscalerEnabled = true,
                         },
                         new FleetSimple
                         {
@@ -37,7 +38,8 @@ namespace AgonesDashboard.Controllers
                             Scheduling = "Distributed",
                             ReadyReplicas = 3,
                             ReservedReplicas = 0,
-                            AllocatedReplicas = 3
+                            AllocatedReplicas = 3,
+                            IsAutoscalerEnabled = false,
                         }
                     }
                 },
@@ -50,7 +52,8 @@ namespace AgonesDashboard.Controllers
                             Scheduling = "Packed",
                             ReadyReplicas = 2,
                             ReservedReplicas = 1,
-                            AllocatedReplicas = 3
+                            AllocatedReplicas = 3,
+                            IsAutoscalerEnabled = true,
                         }
                     }
                 }
