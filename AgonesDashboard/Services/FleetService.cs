@@ -87,11 +87,26 @@ namespace AgonesDashboard.Services
 
         public async Task<Detail> DetailAsync(string ns, string name)
         {
+            // OPTIMIZE: リポジトリ呼び出しの並列化がよい
             var fleet = await _fleetRepository.GetAsync(ns, name);
+            var autoscalerResources = await _fleetAutoscalerRepository.ListAsync();
+
+            // リストにあったら非 null
+            V1FleetAutoscaler? autoscaler = null;
+
+            foreach (var item in autoscalerResources.Items ?? new List<V1FleetAutoscaler>())
+            {
+                var targetFleet = item?.Spec?.FleetName;
+                if (targetFleet != null && targetFleet.Equals(name))
+                {
+                    autoscaler = item;
+                }
+            }
 
             var viewModel = new Detail
             {
                 Fleet = fleet,
+                FleetAutoscaler = autoscaler,
             };
 
             return viewModel;
