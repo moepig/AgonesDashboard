@@ -4,6 +4,6 @@ namespace AgonesDashboard.ViewModels.Fleet
 {
     public class Allocation : AbstractViewModel
     {
-        public V1GameServerAllocation GameServerAllocation { get; set; }
+        public required V1GameServerAllocation GameServerAllocation { get; init; }
     }
 }

@@ -2,16 +2,16 @@
 {
     public class ServiceIndex : AbstractViewModel
     {
-        public string Namespace;
-        public IList<ServiceSimple> Allocators;
+        public required string Namespace;
+        public required IList<ServiceSimple> Allocators;
     }
 
     public class ServiceSimple
     {
-        public string Name;
-        public string ExternalName;
-        public IList<string> ClusterIPs;
-        public IList<string> ExternalIPs;
-        public IList<string> Ports;
+        public required string Name;
+        public required string ExternalName;
+        public required IList<string> ClusterIPs;
+        public required IList<string> ExternalIPs;
+        public required IList<string> Ports;
     }
 }

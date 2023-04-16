@@ -1,7 +1,7 @@
 ﻿@model AgonesDashboard.ViewModels.Fleet.Allocation
 @{
-    ViewData["Title"] = @Model?.GameServerAllocation?.Metadata?.Name;
+    ViewData["Title"] = @Model.GameServerAllocation.Metadata?.Name;
 }
 
-<h2>GameServerAllocation - @Model?.GameServerAllocation?.Metadata?.Name</h2>
-<pre><code>@Model?.ToString()</code></pre>
+<h2>GameServerAllocation - @Model.GameServerAllocation.Metadata?.Name</h2>
+<pre><code>@Model.ToString()</code></pre>
