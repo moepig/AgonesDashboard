@@ -5,15 +5,15 @@ namespace AgonesDashboard.ViewModels.Fleet
     public class FleetIndex : AbstractViewModel
     {
         // key: namespace
-        public IDictionary<string, IList<FleetSimple>> Fleets { get; set; }
+        public required IDictionary<string, IList<FleetSimple>> Fleets { get; init; }
     }
     public class FleetSimple
     {
-        public string? Name { get; set; }
-        public string? Scheduling { get; set; }
-        public int? ReadyReplicas { get; set; }
-        public int? ReservedReplicas { get; set; }
-        public int? AllocatedReplicas { get; set; }
-        public bool IsAutoscalerEnabled { get; set; }
+        public required string Name { get; init; }
+        public required string Scheduling { get; init; }
+        public required int ReadyReplicas { get; init; }
+        public required int ReservedReplicas { get; init; }
+        public required int AllocatedReplicas { get; init; }
+        public required bool IsAutoscalerEnabled { get; init; }
     }
 }

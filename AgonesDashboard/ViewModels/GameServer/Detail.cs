@@ -4,6 +4,6 @@ namespace AgonesDashboard.ViewModels.GameServer
 {
     public class Detail : AbstractViewModel
     {
-        public V1GameServer GameServer { get; set; }
+        public required V1GameServer GameServer { get; init; }
     }
 }

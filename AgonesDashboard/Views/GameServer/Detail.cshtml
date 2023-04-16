@@ -1,7 +1,7 @@
 ﻿@model AgonesDashboard.ViewModels.GameServer.Detail
 @{
-    ViewData["Title"] = @Model?.GameServer?.Metadata?.Name;
+    ViewData["Title"] = @Model.GameServer.Metadata?.Name;
 }
 
-<h2>GameServer - @Model?.GameServer?.Metadata?.Name</h2>
-<pre><code>@Model?.ToString()</code></pre>
+<h2>GameServer - @Model.GameServer.Metadata?.Name</h2>
+<pre><code>@Model.ToString()</code></pre>

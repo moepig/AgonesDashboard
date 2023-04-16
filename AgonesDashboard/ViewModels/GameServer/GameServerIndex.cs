@@ -5,24 +5,24 @@ namespace AgonesDashboard.ViewModels.GameServer
     public class GameServerIndex : AbstractViewModel
     {
         // key: namespace
-        public IDictionary<string, IList<GameServerSimple>> GameServers { get; set; }
-        public IDictionary<string, int> ContainerTotal { get; set; }
+        public required IDictionary<string, IList<GameServerSimple>> GameServers { get; init; }
+        public required IDictionary<string, int> ContainerTotal { get; init; }
     }
 
     public class GameServerSimple
     {
-        public string? Name { get; set; }
-        public string? Address { get; set; }
-        public int? ContainerPort { get; set; }
-        public int? HostPort { get; set; }
-        public IEnumerable<GameServerSimpleContainer>? GameServerSimpleContainer { get; set; }
-        public string? Protocol { get; set; }
-        public string? State { get; set; }
+        public required string Name { get; init; }
+        public required string Address { get; init; }
+        public required int ContainerPort { get; init; }
+        public required int HostPort { get; init; }
+        public required IEnumerable<GameServerSimpleContainer> GameServerSimpleContainer { get; init; }
+        public required string Protocol { get; init; }
+        public required string State { get; init; }
     }
 
     public class GameServerSimpleContainer
     {
-        public string? Name { get; set; }
-        public string? Image { get; set; }
+        public required string Name { get; init; }
+        public required string Image { get; init; }
     }
 }

@@ -4,6 +4,6 @@ namespace AgonesDashboard.ViewModels.Fleet
 {
     public class Detail : AbstractViewModel
     {
-        public V1Fleet Fleet { get; set; }
+        public required V1Fleet Fleet { get; init; }
     }
 }

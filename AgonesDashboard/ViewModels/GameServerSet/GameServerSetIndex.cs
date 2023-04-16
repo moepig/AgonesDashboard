@@ -3,16 +3,16 @@
     public class GameServerSetIndex : AbstractViewModel
     {
         // key: namespace
-        public IDictionary<string, IList<GameServerSetSimple>>? GameServerSets { get; set; }
+        public required IDictionary<string, IList<GameServerSetSimple>> GameServerSets { get; init; }
     }
 
     public class GameServerSetSimple
     {
-        public string? Name { get; set; }
-        public string? Scheduling { get; set; }
-        public int? ReadyReplicas { get; set; }
-        public int? ReservedReplicas { get; set; }
-        public int? AllocatedReplicas { get; set; }
-        public int? ShutdownReplicas { get; set; }
+        public required string Name { get; init; }
+        public required string Scheduling { get; init; }
+        public required int ReadyReplicas { get; init; }
+        public required int ReservedReplicas { get; init; }
+        public required int AllocatedReplicas { get; init; }
+        public required int ShutdownReplicas { get; init; }
     }
 }
