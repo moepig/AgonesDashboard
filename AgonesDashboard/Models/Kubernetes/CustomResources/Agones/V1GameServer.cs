@@ -49,7 +49,7 @@ namespace AgonesDashboard.Models.Kubernetes.CustomResources.Agones
         public int PeriodSeconds { get; set; }
 
         [JsonPropertyName("failureThreshold")]
-        public int ailureThreshold { get; set; }
+        public int FailureThreshold { get; set; }
 
         [JsonPropertyName("initialDelaySeconds")]
         public int InitialDelaySeconds { get; set; }
