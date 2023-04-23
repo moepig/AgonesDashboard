@@ -10,3 +10,16 @@ html {
 body {
     margin-bottom: 60px;
 }
+
+.detail__list-ul {
+    justify-content: space-between;
+}
+
+    .detail__list-ul li {
+        text-align: justify;
+    }
+
+.detail__list-label {
+    padding-right: 1em;
+    color: #6c6c6c;
+}

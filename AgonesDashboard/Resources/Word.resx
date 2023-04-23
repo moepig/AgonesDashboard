@@ -150,8 +150,23 @@
   <data name="GameServerContainerPort" xml:space="preserve">
     <value>Container port</value>
   </data>
+  <data name="GameServerDetailRaw" xml:space="preserve">
+    <value>Raw data</value>
+  </data>
   <data name="GameServerHostPort" xml:space="preserve">
     <value>Host port</value>
+  </data>
+  <data name="GameServerMetadata" xml:space="preserve">
+    <value>metadata</value>
+  </data>
+  <data name="GameServerMetadataCreationTimestamp" xml:space="preserve">
+    <value>creationTimestamp</value>
+  </data>
+  <data name="GameServerMetadataName" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="GameServerMetadataNamespace" xml:space="preserve">
+    <value>namespace</value>
   </data>
   <data name="GameServerName" xml:space="preserve">
     <value>Name</value>
@@ -180,8 +195,86 @@
   <data name="GameServerSetShutdownReplicas" xml:space="preserve">
     <value>ShutdownReplicas</value>
   </data>
+  <data name="GameServerSpec" xml:space="preserve">
+    <value>spec</value>
+  </data>
+  <data name="GameServerSpecContainer" xml:space="preserve">
+    <value>container</value>
+  </data>
+  <data name="GameServerSpecHealth" xml:space="preserve">
+    <value>health</value>
+  </data>
+  <data name="GameServerSpecHealthDisabled" xml:space="preserve">
+    <value>disabled</value>
+  </data>
+  <data name="GameServerSpecHealthFailureThreshold" xml:space="preserve">
+    <value>failureThreshold</value>
+  </data>
+  <data name="GameServerSpecHealthInitialDelaySeconds" xml:space="preserve">
+    <value>initialDelaySeconds</value>
+  </data>
+  <data name="GameServerSpecHealthPeriodSeconds" xml:space="preserve">
+    <value>periodSeconds</value>
+  </data>
+  <data name="GameServerSpecPorts" xml:space="preserve">
+    <value>ports</value>
+  </data>
+  <data name="GameServerSpecPortsContainer" xml:space="preserve">
+    <value>container</value>
+  </data>
+  <data name="GameServerSpecPortsContainerPort" xml:space="preserve">
+    <value>containerPort</value>
+  </data>
+  <data name="GameServerSpecPortsHostPort" xml:space="preserve">
+    <value>hostPort</value>
+  </data>
+  <data name="GameServerSpecPortsName" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="GameServerSpecPortsPolicy" xml:space="preserve">
+    <value>policy</value>
+  </data>
+  <data name="GameServerSpecPortsProtocol" xml:space="preserve">
+    <value>protocol</value>
+  </data>
+  <data name="GameServerSpecScheduling" xml:space="preserve">
+    <value>scheduling</value>
+  </data>
+  <data name="GameServerSpecSdkServer" xml:space="preserve">
+    <value>sdkServer</value>
+  </data>
+  <data name="GameServerSpecSdkServerGrpcPort" xml:space="preserve">
+    <value>grpcPort</value>
+  </data>
+  <data name="GameServerSpecSdkServerHttpPort" xml:space="preserve">
+    <value>httpPort</value>
+  </data>
+  <data name="GameServerSpecSdkServerLogLevel" xml:space="preserve">
+    <value>logLevel</value>
+  </data>
   <data name="GameServerState" xml:space="preserve">
     <value>State</value>
+  </data>
+  <data name="GameServerStatus" xml:space="preserve">
+    <value>status</value>
+  </data>
+  <data name="GameServerStatusAddress" xml:space="preserve">
+    <value>address</value>
+  </data>
+  <data name="GameServerStatusNodeName" xml:space="preserve">
+    <value>nodeName</value>
+  </data>
+  <data name="GameServerStatusPorts" xml:space="preserve">
+    <value>ports</value>
+  </data>
+  <data name="GameServerStatusPortsName" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="GameServerStatusPortsPort" xml:space="preserve">
+    <value>port</value>
+  </data>
+  <data name="GameServerStatusState" xml:space="preserve">
+    <value>state</value>
   </data>
   <data name="Namespace" xml:space="preserve">
     <value>Namespace</value>
