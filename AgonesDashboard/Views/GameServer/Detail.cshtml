@@ -1,7 +1,92 @@
-﻿@model AgonesDashboard.ViewModels.GameServer.Detail
+﻿@using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
+@using System.Text.Json;
+@model AgonesDashboard.ViewModels.GameServer.Detail
 @{
     ViewData["Title"] = @Model.GameServer.Metadata?.Name;
 }
 
-<h2>GameServer - @Model.GameServer.Metadata?.Name</h2>
-<pre><code>@Model.ToString()</code></pre>
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="" asp-controller="GameServer" asp-action="Index">GameServer</a></li>
+        <li class="breadcrumb-item active" aria-current="page">@Model.GameServer.Metadata?.Name</li>
+    </ol>
+</nav>
+
+<h3>@Localizer["GameServerMetadata"]</h3>
+<ul class="detail__list-ul">
+    <li><span class="detail__list-label">@Localizer["GameServerMetadataName"]</span>@Model.GameServer.Metadata?.Name</li>
+    <li><span class="detail__list-label">@Localizer["GameServerMetadataNamespace"]</span>@Model.GameServer.Metadata?.NamespaceProperty</li>
+    <li><span class="detail__list-label">@Localizer["GameServerMetadataCreationTimestamp"]</span>@Model.GameServer.Metadata?.CreationTimestamp</li>
+</ul>
+
+<h3>@Localizer["GameServerStatus"]</h3>
+<ul>
+    <li><span class="detail__list-label">@Localizer["GameServerStatusState"]</span>@Model.GameServer.Status?.State</li>
+    <li><span class="detail__list-label">@Localizer["GameServerStatusAddress"]</span>@Model.GameServer.Status?.Address</li>
+    <li><span class="detail__list-label">@Localizer["GameServerStatusNodeName"]</span>@Model.GameServer.Status?.NodeName</li>
+    <li>
+        <span class="detail__list-label">@Localizer["GameServerStatusPorts"]</span>
+        <ul>
+            @foreach (var item in @Model.GameServer.Status?.Ports ?? new List<V1GameServerStatusPort>())
+            {
+                <li>
+                    <span class="detail__list-label">@Localizer["GameServerStatusPortsName"]</span>@item.Name
+                    <ul>
+                        <li><span class="detail__list-label">@Localizer["GameServerStatusPortsPort"]</span>@item.Port</li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </li>
+</ul>
+
+<h3>@Localizer["GameServerSpec"]</h3>
+<ul>
+    <li><span class="detail__list-label">@Localizer["GameServerSpecContainer"]</span>@Model.GameServer.Spec?.Container</li>
+    <li>
+        <span class="detail__list-label">@Localizer["GameServerSpecPorts"]</span>
+        <ul>
+            @foreach (var item in @Model.GameServer.Spec?.Ports ?? new List<V1GameServerPort>())
+            {
+                <li>
+                    <span class="detail__list-label">@Localizer["GameServerSpecPortsName"]</span>@item.Name
+                    <ul>
+                        <li><span class="detail__list-label">@Localizer["GameServerSpecPortsPolicy"]</span>@item.PortPolicy</li>
+                        <li><span class="detail__list-label">@Localizer["GameServerSpecPortsContainer"]</span>@item.Container</li>
+                        <li><span class="detail__list-label">@Localizer["GameServerSpecPortsContainerPort"]</span>@item.ContainerPort</li>
+                        <li><span class="detail__list-label">@Localizer["GameServerSpecPortsHostPort"]</span>@item.HostPort</li>
+                        <li><span class="detail__list-label">@Localizer["GameServerSpecPortsProtocol"]</span>@item.Protocol</li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </li>
+    <li>
+        <span class="detail__list-label">@Localizer["GameServerSpecHealth"]</span>
+        <ul>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecHealthDisabled"]</span>@Model.GameServer.Spec?.Health?.Disabled</li>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecHealthPeriodSeconds"]</span>@Model.GameServer.Spec?.Health?.PeriodSeconds</li>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecHealthFailureThreshold"]</span>@Model.GameServer.Spec?.Health?.FailureThreshold</li>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecHealthInitialDelaySeconds"]</span>@Model.GameServer.Spec?.Health?.InitialDelaySeconds</li>
+        </ul>
+    </li>
+    <li><span class="detail__list-label">@Localizer["GameServerSpecScheduling"]</span>@Model.GameServer.Spec?.Scheduling</li>
+    <li>
+        <span class="detail__list-label">@Localizer["GameServerSpecSdkServer"]</span>
+        <ul>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecSdkServerLogLevel"]</span>@Model.GameServer.Spec?.SdkServer?.LogLevel</li>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecSdkServerGrpcPort"]</span>@Model.GameServer.Spec?.SdkServer?.GrpcPort</li>
+            <li><span class="detail__list-label">@Localizer["GameServerSpecSdkServerHttpPort"]</span>@Model.GameServer.Spec?.SdkServer?.HttpPort</li>
+        </ul>
+    </li>
+</ul>
+
+<hr />
+
+<details>
+    <summary>@Localizer["GameServerDetailRaw"]</summary>
+    @{
+        var json = JsonSerializer.Serialize(Model.GameServer, new JsonSerializerOptions { WriteIndented = true });
+    }
+    <pre><code>@json</code></pre>
+</details>
