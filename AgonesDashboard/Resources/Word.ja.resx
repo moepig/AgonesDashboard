@@ -150,8 +150,23 @@
   <data name="GameServerContainerPort" xml:space="preserve">
     <value>コンテナ側ポート</value>
   </data>
+  <data name="GameServerDetailRaw" xml:space="preserve">
+    <value>JSON 形式で生データを表示</value>
+  </data>
   <data name="GameServerHostPort" xml:space="preserve">
     <value>ホスト側ポート</value>
+  </data>
+  <data name="GameServerMetadata" xml:space="preserve">
+    <value>メタデータ</value>
+  </data>
+  <data name="GameServerMetadataCreationTimestamp" xml:space="preserve">
+    <value>リソース作成時刻</value>
+  </data>
+  <data name="GameServerMetadataName" xml:space="preserve">
+    <value>リソース名</value>
+  </data>
+  <data name="GameServerMetadataNamespace" xml:space="preserve">
+    <value>名前空間</value>
   </data>
   <data name="GameServerName" xml:space="preserve">
     <value>GameServer名</value>
@@ -180,8 +195,86 @@
   <data name="GameServerSetShutdownReplicas" xml:space="preserve">
     <value>Shutdown</value>
   </data>
+  <data name="GameServerSpec" xml:space="preserve">
+    <value>定義</value>
+  </data>
+  <data name="GameServerSpecContainer" xml:space="preserve">
+    <value>専用ゲームサーバのコンテナ名</value>
+  </data>
+  <data name="GameServerSpecHealth" xml:space="preserve">
+    <value>ヘルスチェック</value>
+  </data>
+  <data name="GameServerSpecHealthDisabled" xml:space="preserve">
+    <value>無効か</value>
+  </data>
+  <data name="GameServerSpecHealthFailureThreshold" xml:space="preserve">
+    <value>起動失敗とするヘルスチェック失敗回数の閾値</value>
+  </data>
+  <data name="GameServerSpecHealthInitialDelaySeconds" xml:space="preserve">
+    <value>初回ヘルスチェックまでの待機時間</value>
+  </data>
+  <data name="GameServerSpecHealthPeriodSeconds" xml:space="preserve">
+    <value>ヘルスチェック間隔</value>
+  </data>
+  <data name="GameServerSpecPorts" xml:space="preserve">
+    <value>ポート</value>
+  </data>
+  <data name="GameServerSpecPortsContainer" xml:space="preserve">
+    <value>コンテナ名</value>
+  </data>
+  <data name="GameServerSpecPortsContainerPort" xml:space="preserve">
+    <value>コンテナ側のポート</value>
+  </data>
+  <data name="GameServerSpecPortsHostPort" xml:space="preserve">
+    <value>ホスト側のポート</value>
+  </data>
+  <data name="GameServerSpecPortsName" xml:space="preserve">
+    <value>ポート設定名</value>
+  </data>
+  <data name="GameServerSpecPortsPolicy" xml:space="preserve">
+    <value>ポリシー</value>
+  </data>
+  <data name="GameServerSpecPortsProtocol" xml:space="preserve">
+    <value>プロトコル</value>
+  </data>
+  <data name="GameServerSpecScheduling" xml:space="preserve">
+    <value>スケジューリング</value>
+  </data>
+  <data name="GameServerSpecSdkServer" xml:space="preserve">
+    <value>SDK サーバ</value>
+  </data>
+  <data name="GameServerSpecSdkServerGrpcPort" xml:space="preserve">
+    <value>GRPC ポート</value>
+  </data>
+  <data name="GameServerSpecSdkServerHttpPort" xml:space="preserve">
+    <value>HTTP ポート</value>
+  </data>
+  <data name="GameServerSpecSdkServerLogLevel" xml:space="preserve">
+    <value>ログレベル</value>
+  </data>
   <data name="GameServerState" xml:space="preserve">
     <value>State</value>
+  </data>
+  <data name="GameServerStatus" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
+  <data name="GameServerStatusAddress" xml:space="preserve">
+    <value>IP アドレス</value>
+  </data>
+  <data name="GameServerStatusNodeName" xml:space="preserve">
+    <value>実行ノード名</value>
+  </data>
+  <data name="GameServerStatusPorts" xml:space="preserve">
+    <value>ポート</value>
+  </data>
+  <data name="GameServerStatusPortsName" xml:space="preserve">
+    <value>ポート名</value>
+  </data>
+  <data name="GameServerStatusPortsPort" xml:space="preserve">
+    <value>ポート</value>
+  </data>
+  <data name="GameServerStatusState" xml:space="preserve">
+    <value>GameServer の状態</value>
   </data>
   <data name="Namespace" xml:space="preserve">
     <value>Namespace</value>
