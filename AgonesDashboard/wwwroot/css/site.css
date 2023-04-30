@@ -13,7 +13,13 @@ body {
 
 .detail__list-ul {
     justify-content: space-between;
+    list-style: none;
+    padding-left: 0;
 }
+    .detail__list-ul ul {
+        justify-content: space-between;
+        list-style: none;
+    }
 
     .detail__list-ul li {
         text-align: justify;
