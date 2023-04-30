@@ -211,10 +211,10 @@
     <value>起動失敗とするヘルスチェック失敗回数の閾値</value>
   </data>
   <data name="GameServerSpecHealthInitialDelaySeconds" xml:space="preserve">
-    <value>初回ヘルスチェックまでの待機時間</value>
+    <value>初回ヘルスチェックまでの待機時間 (秒)</value>
   </data>
   <data name="GameServerSpecHealthPeriodSeconds" xml:space="preserve">
-    <value>ヘルスチェック間隔</value>
+    <value>ヘルスチェック間隔 (秒)</value>
   </data>
   <data name="GameServerSpecPorts" xml:space="preserve">
     <value>ポート</value>
