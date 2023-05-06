@@ -1,4 +1,5 @@
-﻿using k8s;
+﻿using AgonesDashboard.Config;
+using k8s;
 using k8s.Models;
 
 namespace AgonesDashboard.Repositories.Kubernetes
@@ -9,12 +10,12 @@ namespace AgonesDashboard.Repositories.Kubernetes
 
         private k8s.Kubernetes _kube;
 
-        public ServiceRepository(ILogger<ServiceRepository> logger)
+        public ServiceRepository(ILogger<ServiceRepository> logger, IConfig config)
         {
             _logger = logger;
 
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            _kube = new k8s.Kubernetes(config);
+            var k8sConfig = config.GetKuberneteClientConfiguration();
+            _kube = new k8s.Kubernetes(k8sConfig);
         }
 
         public async Task<V1ServiceList> ListAsync(string ns)

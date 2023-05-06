@@ -1,4 +1,5 @@
-﻿using AgonesDashboard.Models.Kubernetes;
+﻿using AgonesDashboard.Config;
+using AgonesDashboard.Models.Kubernetes;
 using AgonesDashboard.Models.Kubernetes.CustomResources.Agones;
 using k8s;
 
@@ -10,12 +11,12 @@ namespace AgonesDashboard.Repositories.Kubernetes
 
         private GenericClient _client;
 
-        public FleetRepository(ILogger<FleetRepository> logger)
+        public FleetRepository(ILogger<FleetRepository> logger, IConfig config)
         {
             _logger = logger;
 
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
-            var kubernetes = new k8s.Kubernetes(config);
+            var k8sConfig = config.GetKuberneteClientConfiguration();
+            var kubernetes = new k8s.Kubernetes(k8sConfig);
             _client = new GenericClient(kubernetes, "agones.dev", "v1", "fleets");
         }
 
