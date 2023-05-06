@@ -1,3 +1,4 @@
+using AgonesDashboard.Config;
 using AgonesDashboard.Repositories;
 using AgonesDashboard.Repositories.Kubernetes;
 using AgonesDashboard.Services;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IGameServerService, GameServerService>();
 builder.Services.AddScoped<IGameServerSetService, GameServerSetService>();
 builder.Services.AddScoped<IFleetService, FleetService>();
 builder.Services.AddScoped<IServiceService, ServiceService>();
+builder.Services.AddSingleton<IConfig, Config>();
 
 var app = builder.Build();
 
