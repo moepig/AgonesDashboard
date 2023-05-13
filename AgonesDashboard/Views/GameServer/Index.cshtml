@@ -1,5 +1,5 @@
 ﻿@using AgonesDashboard.ViewModels.GameServer
-@using Microsoft.AspNetCore.Mvc.Rendering 
+@using Microsoft.AspNetCore.Mvc.Rendering
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
 @model GameServerIndex
 @{
@@ -48,9 +48,12 @@
                             {
                                 <td rowspan="@containerCount">@gs.State</td>
                                 <td rowspan="@containerCount">@gs.Address</td>
-                                <td rowspan="@containerCount">@gs.HostPort</td>
-                                <td rowspan="@containerCount">@gs.ContainerPort</td>
-                                <td rowspan="@containerCount">@gs.Protocol</td>
+                            }
+                            <td>@c.HostPort</td>
+                            <td>@c.ContainerPort</td>
+                            <td>@c.Protocol</td>
+                            @if (isGameServerFirst)
+                            {
                                 <td rowspan="@containerCount">
                                     <form asp-area="" asp-controller="GameServer" asp-action="Delete" asp-route-ns="@k" asp-route-name="@gs.Name" method="post">
                                         <input type="hidden" name="name" value="@gs.Name" />

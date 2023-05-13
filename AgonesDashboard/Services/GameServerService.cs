@@ -30,6 +30,10 @@ namespace AgonesDashboard.Services
                     continue;
                 }
 
+                // コンテナ名: ポート情報 な Dictionary
+                // "unknown" は無意味な文字列で、p.Container -> null の時の動作は諦めている
+                var ports = item.Spec.Ports?.ToDictionary(p => p.Container ?? "unknown");
+
                 // 1 GameServer に含まれるコンテナをまとめるリスト
                 var simpleContainers = new List<GameServerSimpleContainer>();
 
@@ -40,22 +44,18 @@ namespace AgonesDashboard.Services
                     {
                         Name = container.Name,
                         Image = container.Image,
+                        ContainerPort = ports != null ? ports[container.Name].ContainerPort : -1,
+                        HostPort = ports != null ? ports[container.Name].HostPort : -1,
+                        Protocol = ports != null ? (ports[container.Name].Protocol ?? "error") : "error",
                     };
                     simpleContainers.Add(simpleContainer);
                 }
-
-                // ゲームサーバコンテナに対応するポート情報を取得
-                var port = item.Spec.Ports?
-                    .FirstOrDefault(x => x.Container == item.Spec.Container);
 
                 var gameServer = new GameServerSimple
                 {
                     Name = item.Metadata?.Name ?? "error",
                     GameServerSimpleContainer = simpleContainers,
                     Address = item.Status?.Address ?? "error",
-                    ContainerPort = port?.ContainerPort ?? -1,
-                    HostPort = port?.HostPort ?? -1,
-                    Protocol = port?.Protocol ?? "error",
                     State = item.Status?.State ?? "error",
                 };
 
