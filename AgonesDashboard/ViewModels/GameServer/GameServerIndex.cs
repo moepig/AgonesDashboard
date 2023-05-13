@@ -13,10 +13,7 @@ namespace AgonesDashboard.ViewModels.GameServer
     {
         public required string Name { get; init; }
         public required string Address { get; init; }
-        public required int ContainerPort { get; init; }
-        public required int HostPort { get; init; }
         public required IEnumerable<GameServerSimpleContainer> GameServerSimpleContainer { get; init; }
-        public required string Protocol { get; init; }
         public required string State { get; init; }
     }
 
@@ -24,5 +21,8 @@ namespace AgonesDashboard.ViewModels.GameServer
     {
         public required string Name { get; init; }
         public required string Image { get; init; }
+        public required int ContainerPort { get; init; }
+        public required int HostPort { get; init; }
+        public required string Protocol { get; init; }
     }
 }

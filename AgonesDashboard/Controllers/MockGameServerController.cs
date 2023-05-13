@@ -19,30 +19,24 @@ namespace AgonesDashboard.Controllers
             var gameServer1 = new GameServerSimple
             {
                 Name = "gameServer1",
-                ContainerPort = 8080,
-                HostPort = 80,
-                Protocol = "TCP",
                 State = "Healty",
                 Address = "1.2.3.4",
                 GameServerSimpleContainer = new List<GameServerSimpleContainer>
                 {
-                    new GameServerSimpleContainer { Name = "container1", Image = "image1" },
-                    new GameServerSimpleContainer { Name = "container2", Image = "image2" },
-                    new GameServerSimpleContainer { Name = "container3", Image = "image3" }
+                    new GameServerSimpleContainer { Name = "container1", Image = "image1", ContainerPort = 1080, HostPort = 10, Protocol = "TCP", },
+                    new GameServerSimpleContainer { Name = "container2", Image = "image2", ContainerPort = 2080, HostPort = 20, Protocol = "UDP", },
+                    new GameServerSimpleContainer { Name = "container3", Image = "image3", ContainerPort = 3080, HostPort = 30, Protocol = "TCP", }
                 }
             };
 
             var gameServer2 = new GameServerSimple
             {
                 Name = "gameServer2",
-                ContainerPort = 9090,
-                HostPort = 90,
-                Protocol = "UDP",
                 State = "Unhealty",
                 Address = "192.168.100.200",
                 GameServerSimpleContainer = new List<GameServerSimpleContainer>
                 {
-                    new GameServerSimpleContainer { Name = "container3", Image = "image3" },
+                    new GameServerSimpleContainer { Name = "container2", Image = "image2", ContainerPort = 2080, HostPort = 20, Protocol = "UDP", },
                 }
             };
 
