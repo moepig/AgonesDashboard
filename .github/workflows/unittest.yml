@@ -2,10 +2,7 @@ name: unit test
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "*" ]
-    types: [ "opened", "edited", "reopened", "synchronize" ]
+    branches: [ "**" ]
 
 jobs:
   build_and_test:
@@ -22,7 +19,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --nologo
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --nologo --verbosity normal
