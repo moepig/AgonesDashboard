@@ -44,9 +44,9 @@ namespace AgonesDashboard.Services
                     {
                         Name = container.Name,
                         Image = container.Image,
-                        ContainerPort = ports != null ? ports[container.Name].ContainerPort : -1,
-                        HostPort = ports != null ? ports[container.Name].HostPort : -1,
-                        Protocol = ports != null ? (ports[container.Name].Protocol ?? "error") : "error",
+                        ContainerPort = ports != null && ports.ContainsKey(container.Name) ? ports[container.Name].ContainerPort : -1,
+                        HostPort = ports != null && ports.ContainsKey(container.Name) ? ports[container.Name].HostPort : -1,
+                        Protocol = ports != null && ports.ContainsKey(container.Name) ? (ports[container.Name].Protocol ?? "error") : "error",
                     };
                     simpleContainers.Add(simpleContainer);
                 }
