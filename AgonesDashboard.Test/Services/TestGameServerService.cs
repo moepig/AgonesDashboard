@@ -27,7 +27,7 @@ namespace AgonesDashboard.Test.Services
             Assert.NotNull(viewModel);
             Assert.Equal(4, viewModel.GameServers["default"].Count);
             Assert.Equal(1, viewModel.GameServers["namespace1"].Count);
-            Assert.Equal(4, viewModel.ContainerTotal["default"]);
+            Assert.Equal(5, viewModel.ContainerTotal["default"]);
             Assert.Equal(1, viewModel.ContainerTotal["namespace1"]);
 
             foreach (var (gsKey, gsValue) in viewModel.GameServers)
@@ -39,7 +39,7 @@ namespace AgonesDashboard.Test.Services
                     Assert.NotNull(gs.Address);
                     Assert.NotEmpty(gs.GameServerSimpleContainer);
 
-                    foreach(var simpleContainer in gs.GameServerSimpleContainer)
+                    foreach (var simpleContainer in gs.GameServerSimpleContainer)
                     {
                         var t = typeof(GameServerSimpleContainer);
                         foreach (var f in t.GetFields())
@@ -460,6 +460,48 @@ namespace AgonesDashboard.Test.Services
                                                     }
                                                 }
                                             }
+                                        },
+                                        new V1Container
+                                        {
+                                            Image = "example.com/another-image:1.0",
+                                            Name = "another-container",
+                                            Resources = new V1ResourceRequirements
+                                            {
+                                                Limits = new Dictionary<string, ResourceQuantity>
+                                                {
+                                                    {
+                                                        "cpu",
+                                                        new ResourceQuantity
+                                                        {
+                                                            Value = "100m"
+                                                        }
+                                                    },
+                                                    {
+                                                        "memory",
+                                                        new ResourceQuantity
+                                                        {
+                                                            Value = "128Mi"
+                                                        }
+                                                    }
+                                                },
+                                                Requests = new Dictionary<string, ResourceQuantity>
+                                                {
+                                                    {
+                                                        "cpu",
+                                                        new ResourceQuantity
+                                                        {
+                                                            Value = "100m"
+                                                        }
+                                                    },
+                                                    {
+                                                        "memory",
+                                                        new ResourceQuantity
+                                                        {
+                                                            Value = "128Mi"
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -522,7 +564,7 @@ namespace AgonesDashboard.Test.Services
                                     Time = new DateTime(2023, 5, 21, 5, 43, 16, 0, DateTimeKind.Utc)
                                 }
                             },
-                            Name = "simple-game-server-v9p2q-whbls",
+                            Name = "simple-game-server-v9p2q-whbls-with-sidecar",
                             NamespaceProperty = "default",
                             OwnerReferences = new List<V1OwnerReference>
                             {
